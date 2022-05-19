@@ -68,7 +68,6 @@ p {
   color: wheat;
 }
 #footer {
-  background-color: #e1be78;
   border-top: 5px solid rgb(239, 245, 240);
   border-bottom: 5px solid rgb(107, 100, 103);
 }

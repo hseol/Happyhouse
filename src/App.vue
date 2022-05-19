@@ -33,7 +33,4 @@ a:hover {
 a.router-link-exact-active {
   color: #68b3c8;
 }
-#app {
-  background-color: #f1eae0;
-}
 </style>
