@@ -1,2 +1,2 @@
 # happyhouse-frontend
-springboot server
+vue frontend
