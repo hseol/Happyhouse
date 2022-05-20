@@ -37,12 +37,12 @@ const routes = [
     component: () => import("@/views/MemberView.vue"),
     children: [
       {
-        path: "singin",
+        path: "signin",
         name: "signIn",
         component: () => import("@/components/user/MemberLogin.vue"),
       },
       {
-        path: "singup",
+        path: "signup",
         name: "signUp",
         component: () => import("@/components/user/MemberRegister.vue"),
       },
