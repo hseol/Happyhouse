@@ -1,10 +1,22 @@
 <template>
   <b-container v-if="houses && houses.length != 0" class="bv-example-row mt-3">
-    <house-list-item
-      v-for="(house, index) in houses"
-      :key="index"
-      :house="house"
-    />
+    <b-card no-body>
+      <b-card-body
+        class="mb-2"
+        style="
+          position: relative;
+          min-height: 500px;
+          max-height: 650px;
+          overflow-y: scroll;
+        "
+      >
+        <house-list-item
+          v-for="(house, index) in houses"
+          :key="index"
+          :house="house"
+        />
+      </b-card-body>
+    </b-card>
   </b-container>
   <b-container v-else class="bv-example-row mt-3">
     <b-row>

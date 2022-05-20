@@ -24,6 +24,8 @@
         @change="searchApt"
       ></b-form-select>
     </b-col>
+
+    <b-button>선택</b-button>
   </b-row>
 </template>
 
@@ -38,7 +40,7 @@ import { mapState, mapActions, mapMutations } from "vuex";
     키: 값
     memberStore: memberStore,
     houseStore: houseStore
-  }  
+  }
 */
 const houseStore = "houseStore";
 
