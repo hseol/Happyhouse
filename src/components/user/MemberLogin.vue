@@ -48,6 +48,7 @@
             >
           </b-form>
         </b-card>
+        <br />
       </b-col>
       <b-col></b-col>
     </b-row>

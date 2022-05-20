@@ -68,7 +68,7 @@ p {
   color: wheat;
 }
 #footer {
-  border-top: 5px solid rgb(239, 245, 240);
+  border-top: 5px solid rgb(229, 122, 28);
   border-bottom: 5px solid rgb(107, 100, 103);
 }
 h3 {
