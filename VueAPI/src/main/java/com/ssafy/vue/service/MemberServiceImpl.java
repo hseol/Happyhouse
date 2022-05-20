@@ -1,5 +1,7 @@
 package com.ssafy.vue.service;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +25,9 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto userInfo(String userid) throws Exception {
 		return memberMapper.userInfo(userid);
 	}
-
 	@Override
-	public void memberInsert(MemberDto memberDto) throws Exception {
-		memberMapper.memberInsert(memberDto);
+	public boolean insertMember(MemberDto memberDto) {
+		return memberMapper.insertMember(memberDto); 
 		
 	}
 

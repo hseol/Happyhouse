@@ -63,4 +63,15 @@ public class MemberDto {
 				+ ", joindate=" + joindate + "]";
 	}
 
+//	public MemberDto(String userid, String username, String userpwd, String email, String joindate) {
+//		super();
+//		this.userid = userid;
+//		this.username = username;
+//		this.userpwd = userpwd;
+//		this.email = email;
+//		this.joindate = joindate;
+//	}
+	
+	
+
 }
