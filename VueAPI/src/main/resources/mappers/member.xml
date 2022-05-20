@@ -9,7 +9,9 @@
 		from ssafy_member
 		where userid = #{userid} and userpwd = #{userpwd}
 	</select>
-	
+	<insert id="memberInsert" parameterType="memberDto">
+    insert into member(userid,userpwd,username,email) values(#{userid},#{userpwd},#{username},#{email})
+    </insert>
 	<select id="userInfo" parameterType="String" resultType="memberDto">
 		select username, userid, email, joindate
 		from ssafy_member

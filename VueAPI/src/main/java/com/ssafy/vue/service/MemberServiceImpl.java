@@ -24,4 +24,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.userInfo(userid);
 	}
 
+	@Override
+	public void memberInsert(MemberDto memberDto) throws Exception {
+		memberMapper.memberInsert(memberDto);
+		
+	}
+
 }
