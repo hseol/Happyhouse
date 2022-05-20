@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,5 +96,55 @@ public class MemberController {
 		}
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
+	@PostMapping("memberInsert")
+	public String memberInsert(MemberDto memberDto) throws Exception {
+		System.out.println(memberDto);
+		memberService.memberInsert(memberDto);
+		return "ok";
+	}
+	
+//	@PostMapping("memberInfo")
+//	public MemberDto memberInfo(HttpServletRequest request) {
+//		//System.out.println("화이팅~"+request.getParameter("id"));
+//		String id =request.getParameter("id");
+//		return memberService.memberInfo(id);
+//	}
+	
+//	@PostMapping("memberUpdate")
+//	public String memberUpdate(MemberDto memberDto) {
+//		System.out.println(memberDto);
+//		memberService.memberUpdate(memberDto);
+//		return "ok";
+//	}
+//	
+//
+//	@PostMapping("logout")
+//	public void logout(HttpServletRequest request) {
+//		HttpSession session = request.getSession(false);
+//		if(session!=null) {
+//		session.invalidate();
+//		}
+//		
+//	}
+//	
+//			
+//	@PostMapping("selectMemberById")
+//	public String selectMemberById(String id){		
+//		System.out.println(id);
+//		JSONObject json=new JSONObject();
+//		
+//		try {
+//			MemberDto m=memberService.selectMemberById(id);
+//			//System.out.println(m);
+//			if(m!=null) {
+//				json.put("msg", "존재하는 아이디입니다");
+//			}else {
+//				json.put("msg", "사용할 수 있는 아이디입니다");
+//			}
+//		}catch(Exception e) {
+//			json.put("msg", e.getMessage());
+//		}	
+//		return json.toJSONString();
+//	}
 
 }
