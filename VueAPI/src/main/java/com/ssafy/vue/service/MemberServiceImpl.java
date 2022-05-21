@@ -31,4 +31,14 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public boolean updateMember(MemberDto memberDto) {
+		return memberMapper.updateMember(memberDto);
+	}
+
+	@Override
+	public MemberDto renewInfo(String userid) throws Exception {
+	return memberMapper.userInfo(userid);
+	}
+
 }
