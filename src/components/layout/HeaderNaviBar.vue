@@ -60,7 +60,7 @@
             ><router-link
               :to="{ name: 'mypage' }"
               class="link align-self-center"
-              >내정보보기</router-link
+              >마이페이지</router-link
             ></b-nav-item
           >
           <b-nav-item
