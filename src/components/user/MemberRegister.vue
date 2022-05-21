@@ -54,6 +54,15 @@
                 placeholder="이메일을 입력하세요."
               ></b-form-input>
             </b-form-group>
+            <b-form-group label="핸드폰번호 :" label-for="phone">
+              <b-form-input
+                type="number"
+                id="phone"
+                required
+                v-model="user.phone"
+                placeholder="핸드폰 번호를 입력하세요."
+              ></b-form-input>
+            </b-form-group>
             <b-button @click="registerMember" variant="primary" class="m-1"
               >회원가입</b-button
             >
@@ -82,6 +91,7 @@ export default {
         userid: "",
         userpwd: "",
         email: "",
+        phone: "",
       },
     };
   },
@@ -110,6 +120,11 @@ export default {
         ((msg = "이메일 입력해주세요"),
         (err = false),
         this.$refs.email.focus());
+      err &&
+        !this.user.phone &&
+        ((msg = "핸드폰 번호를 입력해주세요"),
+        (err = false),
+        this.$refs.phone.focus());
 
       if (!err) alert(msg);
       else this.registerMember();
@@ -122,6 +137,7 @@ export default {
           userpwd: this.user.userpwd,
           username: this.user.username,
           email: this.user.email,
+          phone: this.user.phone,
         },
         ({ data }) => {
           let msg = "회원가입실패";
