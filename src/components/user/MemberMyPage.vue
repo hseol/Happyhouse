@@ -12,13 +12,9 @@
                   label-for="username"
                   class="formlabel"
                 >
-                  <b-form-input
-                    class="formstyle"
-                    type="text"
-                    :placeholder="`${userInfo.username}`"
-                    v-model="user.username"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">
+                    {{ user.username }}
+                  </div>
                 </b-form-group>
               </b-col>
               <b-col md="7"></b-col>
@@ -31,14 +27,9 @@
                   label-for="userid"
                   class="formlabel"
                 >
-                  <b-form-input
-                    class="formstyle"
-                    type="text"
-                    disabled
-                    :placeholder="`${userInfo.userid}`"
-                    v-model="user.userid"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">
+                    {{ user.userid }}
+                  </div>
                 </b-form-group>
               </b-col>
 
@@ -48,13 +39,7 @@
                   label-for="password"
                   class="formlabel"
                 >
-                  <b-form-input
-                    class="formstyle"
-                    type="password"
-                    placeholder=" "
-                    v-model="user.userpwd"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">쉿~! 비밀이야</div>
                 </b-form-group>
               </b-col>
               <b-col md="1"></b-col>
@@ -63,13 +48,9 @@
               <b-col md="1"></b-col>
               <b-col md="10">
                 <b-form-group label="Email" label-for="email" class="formlabel">
-                  <b-form-input
-                    class="formstyle"
-                    type="email"
-                    :placeholder="`${userInfo.email}`"
-                    v-model="user.email"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">
+                    {{ user.email }}
+                  </div>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -81,13 +62,9 @@
                   label-for="phone"
                   class="formlabel"
                 >
-                  <b-form-input
-                    class="formstyle"
-                    type="text"
-                    :placeholder="`${userInfo.phone}`"
-                    v-model="user.phone"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">
+                    {{ user.phone }}
+                  </div>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -99,14 +76,9 @@
                   label-for="joindate"
                   class="formlabel"
                 >
-                  <b-form-input
-                    class="formstyle"
-                    type="text"
-                    disabled
-                    :placeholder="`${userInfo.joindate}`"
-                    v-model="user.joindate"
-                  >
-                  </b-form-input>
+                  <div class="formstyle">
+                    {{ user.joindate }}
+                  </div>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -119,26 +91,16 @@
                   label-for="description"
                   class="formlabel"
                 >
-                  <textarea
-                    class="textarea"
-                    rows="5"
-                    placeholder="Here can be your description"
-                    v-model="user.aboutMe"
-                  >
-                  <!-- class="form-control border-input" -->
-                  </textarea>
+                  <div class="textarea">
+                    {{ user.aboutme }}
+                  </div>
                 </b-form-group>
               </b-col>
               <b-col md="1"></b-col>
             </b-row>
             <div class="text-center">
-              <b-button
-                class="updateBtn"
-                type="info"
-                round
-                @click.native.prevent="updateProfile"
-              >
-                Update Profile
+              <b-button class="updateBtn" type="info" round @click="moveModify">
+                정보수정
               </b-button>
               &nbsp;&nbsp;
               <b-button variant="danger" href="#">회원탈퇴</b-button>
@@ -159,18 +121,25 @@ const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
-  data() {
-    return {
-      user: {
-        aboutMe: `We must accept finite disappointment, but hold on to infinite hope.`,
-      },
-    };
-  },
   components: {
     TodoView,
   },
+  data() {
+    return {
+      user: {},
+    };
+  },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
+  },
+  created() {
+    this.user = this.userInfo;
+    console.log(this.user);
+  },
+  methods: {
+    moveModify() {
+      this.$router.push({ name: "infoModify" });
+    },
   },
 };
 </script>
