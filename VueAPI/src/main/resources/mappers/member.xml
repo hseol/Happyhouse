@@ -13,7 +13,7 @@
     insert into ssafy_member(username,userid,userpwd,email,phone) values(#{username},#{userid},#{userpwd},#{email},#{phone})
     </insert>
 	<select id="userInfo" parameterType="String" resultType="memberDto">
-		select username, userid, email,phone, joindate
+		select username, userid, email,userpwd,phone,aboutme, joindate
 		from ssafy_member
 		where userid = #{userid}
 	</select>
