@@ -11,6 +11,7 @@ public interface MemberMapper {
 	public MemberDto login(MemberDto memberDto) throws SQLException;
 	public MemberDto userInfo(String userid) throws SQLException;
 	public boolean insertMember(MemberDto memberDto);
+	public boolean updateMember(MemberDto memberDto);
 	
 	
 }

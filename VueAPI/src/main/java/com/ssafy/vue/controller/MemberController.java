@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,6 +59,7 @@ public class MemberController {
 				resultMap.put("access-token", token);
 				resultMap.put("message", SUCCESS);
 				status = HttpStatus.ACCEPTED;
+		
 			} else {
 				resultMap.put("message", FAIL);
 				status = HttpStatus.ACCEPTED;
@@ -113,6 +116,24 @@ public class MemberController {
 			if (memberService.insertMember(memberDto)) {
 				return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 			}return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
+    
+    @ApiOperation(value = "회원정보 수정", notes = "아이디에 해당하는 회원정보수정. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@PutMapping("{userid}")
+	public ResponseEntity<String> updateMember(@RequestBody MemberDto memberDto) {
+		logger.debug("updateMember - 호출");
+		
+		if (memberService.updateMember(memberDto)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
+    
+    @ApiOperation(value = "수정된정보불러오기", notes = "아이디 해당하는 정보정보를 반환한다.", response = MemberDto.class)    
+	@GetMapping("{userid}")
+	public ResponseEntity<MemberDto> renewInfo(@PathVariable String userid) throws Exception {
+		logger.debug("renewInfo - 호출");
+		return new ResponseEntity<MemberDto>(memberService.renewInfo(userid), HttpStatus.OK);
 	}
 	
 //	@PostMapping("memberInfo")
