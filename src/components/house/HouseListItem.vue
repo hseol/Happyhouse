@@ -8,12 +8,11 @@
   >
     <b-media>
       <b-media-body>
-        <h4 style="color: #ffcc66">
+        <h5 style="color: #ffcc66">
           <b-icon-geo-alt-fill></b-icon-geo-alt-fill> {{ house.아파트 }}
-        </h4>
+        </h5>
         <h6>- 거래금액 :{{ house.거래금액 }}만원</h6>
-        <h6>- 법정동 :{{ house.법정동 }}</h6>
-        <h6>- 도로명 : {{ house.도로명 }}</h6>
+        <h6>- 건축년도 :{{ house.건축년도 }}년</h6>
         <h6>- 면적 : {{ house.전용면적 }}m²</h6>
       </b-media-body>
     </b-media>

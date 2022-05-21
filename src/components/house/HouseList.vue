@@ -1,6 +1,12 @@
 <template>
   <b-container v-if="houses && houses.length != 0" class="bv-example-row mt-3">
     <b-card no-body>
+      <b-card-header header-tag="nav">
+        <b-nav card-header tabs>
+          <b-nav-item active>검색 결과</b-nav-item>
+          <b-nav-item active>관심 지역</b-nav-item>
+        </b-nav>
+      </b-card-header>
       <b-card-body
         class="mb-2"
         style="
