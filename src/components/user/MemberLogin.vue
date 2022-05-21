@@ -46,6 +46,11 @@
               @click="movePage"
               >회원가입</b-button
             >
+            <img
+              @click="onClickRedirect()"
+              src="@/assets/kakao_login_medium_narrow.png"
+              style="height: 40px"
+            />
           </b-form>
         </b-card>
         <br />
@@ -85,6 +90,12 @@ export default {
     },
     movePage() {
       this.$router.push({ name: "signUp" });
+    },
+    onClickRedirect: function () {
+      window.open(
+        "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=059fc0b0941c9684fe53e7a198c3d420&redirect_uri=http://localhost:8080/user/signin/login_kakao",
+        "_self"
+      );
     },
   },
 };
