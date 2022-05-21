@@ -116,6 +116,7 @@
 
 <script>
 import { mapState } from "vuex";
+import { renewInfo } from "@/api/member";
 import TodoView from "@/views/TodoView.vue";
 const memberStore = "memberStore";
 
@@ -133,12 +134,28 @@ export default {
     ...mapState(memberStore, ["userInfo"]),
   },
   created() {
-    this.user = this.userInfo;
-    console.log(this.user);
+    console.log(this.$route.params.userid);
+    renewInfo(
+      this.$route.params.userid,
+      (response) => {
+        this.user = response.data;
+        console.log(this.user);
+      },
+      (error) => {
+        console.log("삭제시 에러발생!!", error);
+      }
+    );
+
+    // this.user = this.userInfo;
+    // console.log(this.user);
   },
   methods: {
     moveModify() {
-      this.$router.push({ name: "infoModify" });
+      this.$router.replace({
+        name: "infoModify",
+        params: { userid: this.user.userid },
+      });
+      // this.$router.push({ name: "infoModify" });
     },
   },
 };

@@ -58,7 +58,7 @@
           >
           <b-nav-item class="align-self-center"
             ><router-link
-              :to="{ name: 'mypage' }"
+              :to="{ name: 'mypage', params: { userid: userInfo.userid } }"
               class="link align-self-center"
               >마이페이지</router-link
             ></b-nav-item

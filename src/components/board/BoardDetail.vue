@@ -59,6 +59,7 @@ export default {
     },
   },
   created() {
+    console.log(this.$route.params.articleno);
     getArticle(
       this.$route.params.articleno,
       (response) => {
@@ -66,7 +67,7 @@ export default {
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
-      },
+      }
     );
   },
   methods: {

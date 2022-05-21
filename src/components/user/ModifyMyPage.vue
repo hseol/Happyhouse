@@ -116,7 +116,7 @@
                 class="textarea"
                 rows="5"
                 placeholder="자기소개가 없습니다."
-                v-model="user.aboutMe"
+                v-model="user.aboutme"
               >
                   <!-- class="form-control border-input" -->
                   </textarea
@@ -128,7 +128,9 @@
         <div class="text-center">
           <b-button class="updateBtn" type="submit" round> 수정하기 </b-button>
           &nbsp;&nbsp;
-          <b-button variant="danger" @click="$router.go(-1)">수정취소</b-button>
+          <b-button variant="danger" @click="$router.push({ name: 'mypage' })"
+            >수정취소</b-button
+          >
         </div>
         <div class="clearfix"></div>
       </b-form>
@@ -137,7 +139,7 @@
 </template>
 
 <script>
-import { modifyMember } from "@/api/member";
+import { modifyMember, renewInfo } from "@/api/member";
 import { mapState } from "vuex";
 const memberStore = "memberStore";
 
@@ -158,8 +160,18 @@ export default {
   computed: {
     ...mapState(memberStore, ["userInfo"]),
   },
-  created: function () {
-    this.user = this.userInfo;
+  created() {
+    console.log(this.$route.params.userid);
+    renewInfo(
+      this.$route.params.userid,
+      ({ data }) => {
+        this.user = data;
+        console.log(this.user);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   },
   methods: {
     onSubmit(event) {
@@ -213,6 +225,7 @@ export default {
           }
           alert(msg);
           // 현재 route를 /list로 변경.
+
           this.$router.push({ name: "mypage" });
         },
         (error) => {

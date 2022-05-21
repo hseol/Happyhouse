@@ -96,7 +96,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
       this.isUserid = true;
     } else {
@@ -152,7 +152,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     modifyArticle() {
@@ -174,7 +174,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     moveList() {
