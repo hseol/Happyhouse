@@ -71,6 +71,8 @@ const houseStore = {
       const SERVICE_KEY = process.env.VUE_APP_APT_DEAL_API_KEY;
       //   const SERVICE_KEY =
       //     "9Xo0vlglWcOBGUDxH8PPbuKnlBwbWU6aO7%2Bk3FV4baF9GXok1yxIEF%2BIwr2%2B%2F%2F4oVLT8bekKU%2Bk9ztkJO0wsBw%3D%3D";
+      //jgN4xkUPZcv67dkpS9SksO6zpuS%2FHPP5t7Fu3Zco86WrxkGtB1wJD9CwJIiwB2bRtgZdTNa6Wd5DUeRr8kUSng%3D%3D
+      console.log(gugunCode);
       const params = {
         LAWD_CD: gugunCode,
         DEAL_YMD: "202110",
