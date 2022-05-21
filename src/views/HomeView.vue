@@ -4,25 +4,28 @@
       <b-icon icon="house"></b-icon> HappyHouse
     </h3>
     <b-row>
-      <b-col></b-col>
-      <b-col cols="10">
-        <b-jumbotron
-          bg-variant="muted"
-          text-variant="dark"
-          border-variant="dark"
-        >
-          <template #header>HappyHouse</template>
-
-          <template #lead>
-            이제는 최종프로젝트다 <br />
-            화이팅하고 달려가자!
-          </template>
-
-          <hr class="my-4" />
-        </b-jumbotron>
-      </b-col>
-      <b-col></b-col>
+      <b-carousel
+        id="carousel-fade"
+        style="text-shadow: 0px 0px 2px #000;width=100%;"
+        fade
+        indicators
+        img-height="480"
+      >
+        <b-carousel-slide
+          caption="First Slide"
+          img-src="https://picsum.photos/1140/480/?image=10"
+        ></b-carousel-slide>
+        <b-carousel-slide
+          caption="Second Slide"
+          img-src="https://picsum.photos/1140/480/?image=12"
+        ></b-carousel-slide>
+        <b-carousel-slide
+          caption="Third Slide"
+          img-src="https://picsum.photos/1140/480/?image=22"
+        ></b-carousel-slide>
+      </b-carousel>
     </b-row>
+
     <b-row>
       <b-col
         ><b-alert show><h3>공지사항</h3></b-alert><board-home></board-home
