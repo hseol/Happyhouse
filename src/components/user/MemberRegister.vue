@@ -16,7 +16,7 @@
                 v-model="user.username"
                 type="text"
                 required
-                placeholder="이름을 입력하세요."
+                placeholder="이름 입력해주세요."
               ></b-form-input>
             </b-form-group>
             <b-form-group label="ID :" label-for="userid">
@@ -25,7 +25,7 @@
                 v-model="user.userid"
                 type="text"
                 required
-                placeholder="아이디를 입력하세요."
+                placeholder="아이디 입력해주세요."
               ></b-form-input>
               <!--  <b-button
                 type="button"
@@ -42,7 +42,7 @@
                 id="userpwd"
                 required
                 v-model="user.userpwd"
-                placeholder="비밀번호를 입력하세요."
+                placeholder="비밀번호 입력해주세요."
               ></b-form-input>
             </b-form-group>
             <b-form-group label="이메일 :" label-for="email">
@@ -51,19 +51,19 @@
                 id="email"
                 required
                 v-model="user.email"
-                placeholder="이메일을 입력하세요."
+                placeholder="이메일 입력해주세요."
               ></b-form-input>
             </b-form-group>
             <b-form-group label="핸드폰번호 :" label-for="phone">
               <b-form-input
-                type="number"
+                type="tel"
                 id="phone"
                 required
                 v-model="user.phone"
-                placeholder="핸드폰 번호를 입력하세요."
+                placeholder="핸드폰 번호 입력해주세요."
               ></b-form-input>
             </b-form-group>
-            <b-button @click="registerMember" variant="primary" class="m-1"
+            <b-button type="submit" variant="primary" class="m-1"
               >회원가입</b-button
             >
             <b-button @click="moveHome" variant="danger" class="m-1"
@@ -122,7 +122,7 @@ export default {
         this.$refs.email.focus());
       err &&
         !this.user.phone &&
-        ((msg = "핸드폰 번호를 입력해주세요"),
+        ((msg = "핸드폰 번호 입력해주세요"),
         (err = false),
         this.$refs.phone.focus());
 
@@ -149,7 +149,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     moveHome() {

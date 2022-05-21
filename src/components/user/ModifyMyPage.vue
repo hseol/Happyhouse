@@ -7,7 +7,7 @@
           <b-col md="4">
             <b-form-group label="이름" label-for="username" class="formlabel">
               <b-form-input
-                if="username"
+                id="username"
                 class="formstyle"
                 type="text"
                 placeholder="이름 입력해주세요"
