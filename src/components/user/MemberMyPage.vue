@@ -17,7 +17,17 @@
                   </div>
                 </b-form-group>
               </b-col>
-              <b-col md="7"></b-col>
+              <b-col md="6">
+                <b-form-group
+                  label="핸드폰"
+                  label-for="phone"
+                  class="formlabel"
+                >
+                  <div class="formstyle">
+                    {{ user.phone }}
+                  </div>
+                </b-form-group>
+              </b-col>
             </b-row>
             <b-row>
               <b-col md="1"></b-col>
@@ -54,20 +64,7 @@
                 </b-form-group>
               </b-col>
             </b-row>
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="10">
-                <b-form-group
-                  label="핸드폰"
-                  label-for="phone"
-                  class="formlabel"
-                >
-                  <div class="formstyle">
-                    {{ user.phone }}
-                  </div>
-                </b-form-group>
-              </b-col>
-            </b-row>
+
             <b-row>
               <b-col md="1"></b-col>
               <b-col md="10">
@@ -82,7 +79,10 @@
                 </b-form-group>
               </b-col>
             </b-row>
-
+            <b-row
+              ><b-col md="1"></b-col>
+              <b-col md="10"><favorite-location /></b-col
+            ></b-row>
             <b-row>
               <b-col md="1"></b-col>
               <b-col md="10">
@@ -118,12 +118,14 @@
 import { mapState } from "vuex";
 import { renewInfo } from "@/api/member";
 import TodoView from "@/views/TodoView.vue";
+import FavoriteLocation from "./FavoriteLocation.vue";
 const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
   components: {
     TodoView,
+    FavoriteLocation,
   },
   data() {
     return {
