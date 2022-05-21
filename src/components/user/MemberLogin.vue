@@ -46,6 +46,11 @@
               @click="movePage"
               >회원가입</b-button
             >
+            <img
+              @click="onClickRedirect()"
+              src="@/assets/kakao_login_medium_narrow.png"
+              style="height: 40px"
+            />
           </b-form>
         </b-card>
         <br />
