@@ -1,73 +1,224 @@
 <template>
-  <b-container class="mt-4" v-if="userInfo">
-    <b-row>
-      <b-col>
-        <b-alert variant="secondary" show><h3>내정보</h3></b-alert>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col></b-col>
-      <b-col cols="8">
-        <b-jumbotron>
-          <template #header>My Page</template>
-
-          <template #lead> 내 정보 확인페이지입니다. </template>
-
-          <hr class="my-4" />
-
-          <b-container class="mt-4">
+  <b-row>
+    <b-col>
+      <b-card class="card" title="내 정보">
+        <div>
+          <form @submit.prevent>
             <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">아이디</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.userid }}</b-col>
-              <b-col cols="2"></b-col>
+              <b-col md="1"></b-col>
+              <b-col md="4">
+                <b-form-group
+                  label="이름"
+                  label-for="username"
+                  class="formlabel"
+                >
+                  <b-form-input
+                    class="formstyle"
+                    type="text"
+                    :placeholder="`${userInfo.username}`"
+                    v-model="user.username"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col md="7"></b-col>
             </b-row>
             <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">이름</b-col
-              ><b-col cols="4" align-self="start">{{
-                userInfo.username
-              }}</b-col>
-              <b-col cols="2"></b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">이메일</b-col
-              ><b-col cols="4" align-self="start">{{ userInfo.email }}</b-col>
-              <b-col cols="2"></b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2"></b-col>
-              <b-col cols="2" align-self="end">가입일</b-col
-              ><b-col cols="4" align-self="start">{{
-                userInfo.joindate
-              }}</b-col>
-              <b-col cols="2"></b-col>
-            </b-row>
-          </b-container>
-          <hr class="my-4" />
+              <b-col md="1"></b-col>
+              <b-col md="5">
+                <b-form-group
+                  label="아이디"
+                  label-for="userid"
+                  class="formlabel"
+                >
+                  <b-form-input
+                    class="formstyle"
+                    type="text"
+                    disabled
+                    :placeholder="`${userInfo.userid}`"
+                    v-model="user.userid"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
 
-          <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#">회원탈퇴</b-button>
-        </b-jumbotron>
-      </b-col>
-      <b-col></b-col>
-    </b-row>
-  </b-container>
+              <b-col md="5">
+                <b-form-group
+                  label="비밀번호"
+                  label-for="password"
+                  class="formlabel"
+                >
+                  <b-form-input
+                    class="formstyle"
+                    type="password"
+                    placeholder=" "
+                    v-model="user.userpwd"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col md="1"></b-col>
+            </b-row>
+            <b-row>
+              <b-col md="1"></b-col>
+              <b-col md="10">
+                <b-form-group label="Email" label-for="email" class="formlabel">
+                  <b-form-input
+                    class="formstyle"
+                    type="email"
+                    :placeholder="`${userInfo.email}`"
+                    v-model="user.email"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col md="1"></b-col>
+              <b-col md="10">
+                <b-form-group
+                  label="핸드폰"
+                  label-for="phone"
+                  class="formlabel"
+                >
+                  <b-form-input
+                    class="formstyle"
+                    type="text"
+                    :placeholder="`${userInfo.phone}`"
+                    v-model="user.phone"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col md="1"></b-col>
+              <b-col md="10">
+                <b-form-group
+                  label="가입일자"
+                  label-for="joindate"
+                  class="formlabel"
+                >
+                  <b-form-input
+                    class="formstyle"
+                    type="text"
+                    disabled
+                    :placeholder="`${userInfo.joindate}`"
+                    v-model="user.joindate"
+                  >
+                  </b-form-input>
+                </b-form-group>
+              </b-col>
+            </b-row>
+
+            <b-row>
+              <b-col md="1"></b-col>
+              <b-col md="10">
+                <b-form-group
+                  label="자기소개"
+                  label-for="description"
+                  class="formlabel"
+                >
+                  <textarea
+                    class="textarea"
+                    rows="5"
+                    placeholder="Here can be your description"
+                    v-model="user.aboutMe"
+                  >
+                  <!-- class="form-control border-input" -->
+                  </textarea>
+                </b-form-group>
+              </b-col>
+              <b-col md="1"></b-col>
+            </b-row>
+            <div class="text-center">
+              <b-button
+                class="updateBtn"
+                type="info"
+                round
+                @click.native.prevent="updateProfile"
+              >
+                Update Profile
+              </b-button>
+              &nbsp;&nbsp;
+              <b-button variant="danger" href="#">회원탈퇴</b-button>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </b-card>
+    </b-col>
+    <b-col><todo-view></todo-view></b-col>
+  </b-row>
 </template>
 
 <script>
 import { mapState } from "vuex";
-
+import TodoView from "@/views/TodoView.vue";
 const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
-  components: {},
+  data() {
+    return {
+      user: {
+        aboutMe: `We must accept finite disappointment, but hold on to infinite hope.`,
+      },
+    };
+  },
+  components: {
+    TodoView,
+  },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
   },
 };
 </script>
 
-<style></style>
+<style>
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+  background-color: #ffffff;
+  /* color: $card-black-color; */
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  border: none;
+}
+.formstyle {
+  background-color: #fffcf5;
+  border: medium;
+  border-radius: 4px;
+  color: #66615b;
+  font-size: 14px;
+  transition: background-color 0.3s ease 0s;
+  padding: 7px 18px;
+  height: 40px;
+}
+.textarea {
+  width: 100%;
+  background-color: #fffcf5;
+  border: medium;
+  border-radius: 4px;
+  color: #66615b;
+  font-size: 14px;
+  transition: background-color 0.3s ease 0s;
+  padding: 7px 18px;
+  outline-color: #cbe4fc;
+}
+.formlabel {
+  color: #9a9a9a;
+  text-align: left;
+}
+.updateBtn {
+  background-color: #68b3c8;
+  border-color: #68b3c8;
+  color: #fff;
+  opacity: 1;
+}
+input[type="text"]:disabled {
+  background: #fffcf5;
+  font-weight: bolder;
+}
+</style>
