@@ -10,5 +10,5 @@ public interface MemberService {
 	public boolean insertMember(MemberDto memberDto);
 	public boolean updateMember(MemberDto memberDto);
 	public MemberDto renewInfo(String userid) throws Exception;
-	
+	public boolean deleteMember(String userid);
 }

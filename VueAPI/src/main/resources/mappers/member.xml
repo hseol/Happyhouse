@@ -34,4 +34,11 @@
 		 where userid = #{userid}
 	</update>
 	
+		<!-- 게시글 삭제 -->
+	<delete id="deleteMember" parameterType="String">
+		delete 
+		from ssafy_member 
+		where userid = #{userid}
+	</delete>
+	
 </mapper>

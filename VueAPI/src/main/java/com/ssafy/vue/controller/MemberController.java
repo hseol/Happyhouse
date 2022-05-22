@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,6 +137,16 @@ public class MemberController {
 		return new ResponseEntity<MemberDto>(memberService.renewInfo(userid), HttpStatus.OK);
 	}
 	
+    
+    @ApiOperation(value = "회원삭제", notes = "아이디에 해당하는 회원정보를 삭제 그리고 DB삭제 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@DeleteMapping("{userid}")
+	public ResponseEntity<String> deleteMember(@PathVariable String userid) {
+		logger.debug("deleteMember - 호출");
+		if (memberService.deleteMember(userid)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
 //	@PostMapping("memberInfo")
 //	public MemberDto memberInfo(HttpServletRequest request) {
 //		//System.out.println("화이팅~"+request.getParameter("id"));
