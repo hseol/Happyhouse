@@ -25,12 +25,11 @@
         ></b-carousel-slide>
       </b-carousel>
     </b-row>
-
     <b-row>
-      <b-col
+      <b-col class="my-3"
         ><b-alert show><h3>공지사항</h3></b-alert><board-home></board-home
       ></b-col>
-      <b-col
+      <b-col class="my-3"
         ><b-alert show><h3>Q&amp;A</h3></b-alert><qna-list></qna-list
       ></b-col>
     </b-row>

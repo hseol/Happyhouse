@@ -157,7 +157,7 @@ export default {
     ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
     moveModify() {
       this.$router.push({
-        name: "infoModify",
+        name: "memberModify",
         params: { userid: this.user.userid },
       });
       // this.$router.push({ name: "infoModify" });
