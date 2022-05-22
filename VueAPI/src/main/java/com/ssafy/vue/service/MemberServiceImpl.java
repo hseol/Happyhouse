@@ -41,4 +41,13 @@ public class MemberServiceImpl implements MemberService {
 	return memberMapper.userInfo(userid);
 	}
 
+	@Override
+	public boolean deleteMember(String userid) {
+		if(memberMapper.deleteMember(userid)) {
+			return true;
+		}
+		return false;
+		
+	}
+
 }
