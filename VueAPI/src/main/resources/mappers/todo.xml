@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.vue.mapper.TodoMapper">
+
+
+	
+	<!--할일목록띄우기 -->
+	<select id="selectTodo" parameterType="String" resultType="todo">
+		select no, userid, todo, regtime
+		from todos where userid=#{userid} 
+		order by no desc
+	</select>
+
+
+	<!-- 할일 등록 -->
+	<insert id="insertTodo" parameterType="todo">
+		insert into todos(
+			userid, todo
+		) values (
+		#{userid}, #{todo}
+		)
+	</insert>
+	
+	<!-- 게시글 수정 -->
+<!-- 	<update id="updateBoard" parameterType="board">
+		update board 
+		   set subject = #{subject}, 
+		   	   userid = #{userid}, 
+		   	   content = #{content}
+		 where no = #{no}
+	</update> -->
+
+	<!-- 할일 삭제 -->
+	<delete id="deleteTodo" parameterType="int">
+		delete 
+		from todos 
+		where no = #{no}
+	</delete>
+
+</mapper>
+
