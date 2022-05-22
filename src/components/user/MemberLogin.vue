@@ -86,6 +86,8 @@ export default {
       if (this.isLogin) {
         await this.getUserInfo(token);
         this.$router.push({ name: "home" });
+      } else {
+        alert("다시하셈 틀렸음.");
       }
     },
     movePage() {

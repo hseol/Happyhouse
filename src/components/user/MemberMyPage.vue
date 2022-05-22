@@ -103,7 +103,9 @@
                 정보수정
               </b-button>
               &nbsp;&nbsp;
-              <b-button variant="danger" href="#">회원탈퇴</b-button>
+              <b-button variant="danger" @click="deleteMember"
+                >회원탈퇴</b-button
+              >
             </div>
             <div class="clearfix"></div>
           </form>
@@ -115,11 +117,11 @@
 </template>
 
 <script>
-//import { mapState } from "vuex";
-import { renewInfo } from "@/api/member";
+import { mapMutations } from "vuex";
+import { renewInfo, deleteMember } from "@/api/member";
 import TodoView from "@/views/TodoView.vue";
 import FavoriteLocation from "./FavoriteLocation.vue";
-//const memberStore = "memberStore";
+const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
@@ -145,19 +147,33 @@ export default {
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
-      },
+      }
     );
 
     // this.user = this.userInfo;
     // console.log(this.user);
   },
   methods: {
+    ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
     moveModify() {
       this.$router.push({
         name: "infoModify",
         params: { userid: this.user.userid },
       });
       // this.$router.push({ name: "infoModify" });
+    },
+    deleteMember() {
+      if (
+        confirm("정말로 삭제하시겠습니까? 모든 게시글과 정보가 삭제됩니다. ")
+      ) {
+        deleteMember(this.user.userid, () => {
+          this.SET_IS_LOGIN(false);
+          this.SET_USER_INFO(null);
+          sessionStorage.removeItem("access-token");
+          alert("레알루다가 삭제됐당께~~");
+          if (this.$route.path != "/") this.$router.push({ name: "home" });
+        });
+      }
     },
   },
 };
