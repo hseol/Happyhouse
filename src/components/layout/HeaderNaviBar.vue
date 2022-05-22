@@ -33,12 +33,12 @@
               아파트정보</router-link
             ></b-nav-item
           >
-          <b-nav-item href="#"
+          <!-- <b-nav-item href="#"
             ><router-link :to="{ name: 'todo' }" class="link"
               ><b-icon icon="calendar-check" font-scale="1.5"></b-icon>
               TodoList</router-link
             ></b-nav-item
-          >
+          > -->
           <b-nav-item href="#"
             ><router-link :to="{ name: 'qna' }" class="link"
               ><b-icon icon="emoji-laughing" font-scale="1.5"></b-icon>

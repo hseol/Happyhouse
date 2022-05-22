@@ -76,6 +76,7 @@ export default {
       "getGugun",
       "getDong",
       "getHouseList",
+      "getAptList",
     ]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
@@ -97,8 +98,11 @@ export default {
       this.dongCode = null;
       if (this.gugunCode) this.getDong(this.gugunCode);
     },
+    // searchApt() {
+    //   if (this.gugunCode) this.getHouseList(this.gugunCode);
+    // },
     searchApt() {
-      if (this.gugunCode) this.getHouseList(this.gugunCode);
+      if (this.dongCode) this.getAptList(this.dongCode);
     },
   },
 };

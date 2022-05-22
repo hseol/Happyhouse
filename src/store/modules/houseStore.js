@@ -1,11 +1,17 @@
-import { sidoList, gugunList, dongList, houseList } from "@/api/house.js";
+import {
+  sidoList,
+  gugunList,
+  dongList,
+  houseList,
+  aptList,
+} from "@/api/house.js";
 
 const houseStore = {
   namespaced: true,
   state: {
     sidos: [{ value: null, text: "시도 선택하세요" }],
     guguns: [{ value: null, text: "구군 선택하세요" }],
-    dongs: [{ value: null, text: "동 선택하세요" }],
+    dongs: [{ value: null, text: "읍면동 선택하세요" }],
     houses: [],
     house: null,
   },
@@ -35,7 +41,7 @@ const houseStore = {
       state.guguns = [{ value: null, text: "구군 선택하세요" }];
     },
     CLEAR_DONG_LIST: (state) => {
-      state.dongs = [{ value: null, text: "동 선택하세요" }];
+      state.dongs = [{ value: null, text: "읍면동 선택하세요" }];
     },
     SET_HOUSE_LIST: (state, houses) => {
       //   console.log(houses);
@@ -107,6 +113,22 @@ const houseStore = {
         (response) => {
           //   console.log(response.data.response.body.items.item);
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    },
+
+    getAptList: ({ commit }, dongCode) => {
+      const params = {
+        dong: dongCode,
+      };
+      aptList(
+        params,
+        ({ data }) => {
+          // console.log(commit, response);
+          commit("SET_HOUSE_LIST", data);
         },
         (error) => {
           console.log(error);
