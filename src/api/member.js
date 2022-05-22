@@ -37,6 +37,9 @@ async function insertMember(user, success, fail) {
     .catch(fail);
 }
 
+function deleteMember(userid, success, fail) {
+  api.delete(`/user/${userid}`).then(success).catch(fail);
+}
 // function logout(success, fail)
 
-export { login, findById, modifyMember, insertMember, renewInfo };
+export { login, findById, modifyMember, insertMember, renewInfo, deleteMember };
