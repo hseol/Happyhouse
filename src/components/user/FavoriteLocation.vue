@@ -15,7 +15,7 @@
           :options="guguns"
         ></b-form-select>
         &nbsp;&nbsp;
-        <b-button>관심지역설정!</b-button>
+        <b-button @click="addFavlo">관심지역설정!</b-button>
       </span>
     </b-form-group>
 

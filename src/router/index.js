@@ -54,7 +54,7 @@ const routes = [
       },
       {
         path: "modify",
-        name: "infoModify",
+        name: "memberModify",
         beforeEnter: onlyAuthUser,
         component: () => import("@/components/user/ModifyMyPage.vue"),
       },
