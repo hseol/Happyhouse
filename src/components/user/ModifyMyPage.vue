@@ -140,8 +140,8 @@
 
 <script>
 import { modifyMember, renewInfo } from "@/api/member";
-import { mapState } from "vuex";
-const memberStore = "memberStore";
+//import { mapState } from "vuex";
+//const memberStore = "memberStore";
 
 export default {
   name: "ModifyMyPage",
@@ -158,10 +158,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(memberStore, ["userInfo"]),
+    // ...mapState(memberStore, ["userInfo"]),
   },
   created() {
     console.log(this.$route.params.userid);
+
     renewInfo(
       this.$route.params.userid,
       ({ data }) => {
@@ -170,7 +171,7 @@ export default {
       },
       (error) => {
         console.log(error);
-      }
+      },
     );
   },
   methods: {
@@ -226,11 +227,11 @@ export default {
           alert(msg);
           // 현재 route를 /list로 변경.
 
-          this.$router.push({ name: "mypage" });
+          this.$router.push({ name: "home" });
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
   },

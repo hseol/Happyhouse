@@ -99,6 +99,9 @@ const memberStore = "memberStore";
 
 export default {
   name: "HeaderNaviBar",
+  props: {
+    userid: String,
+  },
   computed: {
     ...mapState(memberStore, ["isLogin", "userInfo"]),
   },

@@ -99,7 +99,7 @@
               <b-col md="1"></b-col>
             </b-row>
             <div class="text-center">
-              <b-button class="updateBtn" type="info" round @click="moveModify">
+              <b-button class="updateBtn" round @click="moveModify">
                 정보수정
               </b-button>
               &nbsp;&nbsp;
@@ -115,11 +115,11 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+//import { mapState } from "vuex";
 import { renewInfo } from "@/api/member";
 import TodoView from "@/views/TodoView.vue";
 import FavoriteLocation from "./FavoriteLocation.vue";
-const memberStore = "memberStore";
+//const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
@@ -133,7 +133,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(memberStore, ["userInfo"]),
+    //   ...mapState(memberStore, ["userInfo"]),
   },
   created() {
     console.log(this.$route.params.userid);
@@ -145,7 +145,7 @@ export default {
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
-      }
+      },
     );
 
     // this.user = this.userInfo;
@@ -153,7 +153,7 @@ export default {
   },
   methods: {
     moveModify() {
-      this.$router.replace({
+      this.$router.push({
         name: "infoModify",
         params: { userid: this.user.userid },
       });
