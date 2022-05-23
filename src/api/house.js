@@ -16,7 +16,7 @@ function dongList(params, success, fail) {
 }
 
 function aptList(params, success, fail) {
-  house.get(`/map/apt`, { params: params }).then(success).catch(fail);
+  api.get(`/map/apt`, { params: params }).then(success).catch(fail);
 }
 
 function houseList(params, success, fail) {

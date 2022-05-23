@@ -43,7 +43,9 @@ export default {
     HouseListItem,
   },
   data() {
-    return {};
+    return {
+      house: "",
+    };
   },
   computed: {
     ...mapState(houseStore, ["houses"]),

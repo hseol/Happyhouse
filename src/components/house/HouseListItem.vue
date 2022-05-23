@@ -9,11 +9,11 @@
     <b-media>
       <b-media-body>
         <h5 style="color: #ffcc66">
-          <b-icon-geo-alt-fill></b-icon-geo-alt-fill> {{ house.아파트 }}
+          <b-icon-geo-alt-fill></b-icon-geo-alt-fill> {{ house.apartmentName }}
         </h5>
-        <h6>- 거래금액 :{{ house.거래금액 }}만원</h6>
-        <h6>- 건축년도 :{{ house.건축년도 }}년</h6>
-        <h6>- 면적 : {{ house.전용면적 }}m²</h6>
+        <h6>- 거래금액 :{{ house.recentPrice }}만원</h6>
+        <h6>- 건축년도 :{{ house.buildYear }}년</h6>
+        <h6>- 면적 : {{ house.dong }}m²</h6>
       </b-media-body>
     </b-media>
     <!-- <b-col cols="2" class="text-center align-self-center">
@@ -36,6 +36,7 @@ export default {
   data() {
     return {
       isColor: false,
+      hou: {},
     };
   },
   props: {
@@ -51,6 +52,10 @@ export default {
     colorChange(flag) {
       this.isColor = flag;
     },
+  },
+  created() {
+    this.hou = this.house;
+    //console.log(this.hou);
   },
 };
 </script>
