@@ -40,11 +40,13 @@ public class HouseMapController {
 	
 	@GetMapping("/dong")
 	public ResponseEntity<List<HouseInfoDto>> dong(@RequestParam("gugun") String gugun) throws Exception {
+		logger.debug("수리수리 동 나와라 뚝딱 - 호출");
 		return new ResponseEntity<List<HouseInfoDto>>(haHouseMapService.getDongInGugun(gugun), HttpStatus.OK);
 	}
 	
 	@GetMapping("/apt")
 	public ResponseEntity<List<HouseInfoDto>> apt(@RequestParam("dong") String dong) throws Exception {
+		logger.debug("수리수리 아파트 나와라 얍 - 호출");
 		return new ResponseEntity<List<HouseInfoDto>>(haHouseMapService.getAptInDong(dong), HttpStatus.OK);
 	}
 	
