@@ -81,8 +81,9 @@
             </b-row>
             <b-row
               ><b-col md="1"></b-col>
-              <b-col md="10"><favorite-location /></b-col
-            ></b-row>
+              <!--<b-col md="10"><favorite-location /></b-col
+            >--></b-row
+            >
             <b-row>
               <b-col md="1"></b-col>
               <b-col md="10">
@@ -117,17 +118,20 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import { renewInfo, deleteMember } from "@/api/member";
+import { mapMutations, mapState } from "vuex";
+import { deleteMember } from "@/api/member";
 import TodoView from "@/views/TodoView.vue";
-import FavoriteLocation from "./FavoriteLocation.vue";
+//import FavoriteLocation from "./FavoriteLocation.vue";
 const memberStore = "memberStore";
 
 export default {
   name: "MemberMyPage",
+  props: {
+    userid: String,
+  },
   components: {
     TodoView,
-    FavoriteLocation,
+    // FavoriteLocation,
   },
   data() {
     return {
@@ -135,32 +139,20 @@ export default {
     };
   },
   computed: {
-    //   ...mapState(memberStore, ["userInfo"]),
+    ...mapState(memberStore, ["userInfo"]),
   },
   created() {
-    console.log(this.$route.params.userid);
-    renewInfo(
-      this.$route.params.userid,
-      (response) => {
-        this.user = response.data;
-        console.log(this.user);
-      },
-      (error) => {
-        console.log("삭제시 에러발생!!", error);
-      },
-    );
-
-    // this.user = this.userInfo;
-    // console.log(this.user);
+    this.user = this.userInfo;
+    console.log(this.user);
   },
   methods: {
     ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
     moveModify() {
-      this.$router.push({
-        name: "memberModify",
-        params: { userid: this.user.userid },
-      });
-      // this.$router.push({ name: "infoModify" });
+      // this.$router.push({
+      //   name: "memberModify",
+      //   params: { userid: this.user.userid },
+      // });
+      this.$router.push({ name: "memberModify" });
     },
     deleteMember() {
       if (
