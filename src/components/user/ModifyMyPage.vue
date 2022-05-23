@@ -128,9 +128,7 @@
         <div class="text-center">
           <b-button class="updateBtn" type="submit" round> 수정하기 </b-button>
           &nbsp;&nbsp;
-          <b-button variant="danger" @click="$router.push({ name: 'mypage' })"
-            >수정취소</b-button
-          >
+          <b-button variant="danger" @click="moveMypage">수정취소</b-button>
         </div>
         <div class="clearfix"></div>
       </b-form>
@@ -139,9 +137,9 @@
 </template>
 
 <script>
-import { modifyMember, renewInfo } from "@/api/member";
-//import { mapState } from "vuex";
-//const memberStore = "memberStore";
+import { modifyMember } from "@/api/member";
+import { mapState, mapMutations } from "vuex";
+const memberStore = "memberStore";
 
 export default {
   name: "ModifyMyPage",
@@ -158,23 +156,13 @@ export default {
     };
   },
   computed: {
-    // ...mapState(memberStore, ["userInfo"]),
+    ...mapState(memberStore, ["userInfo"]),
   },
   created() {
-    console.log(this.$route.params.userid);
-
-    renewInfo(
-      this.$route.params.userid,
-      ({ data }) => {
-        this.user = data;
-        console.log(this.user);
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+    this.user = this.userInfo;
   },
   methods: {
+    ...mapMutations(memberStore, ["SET_USER_INFO"]),
     onSubmit(event) {
       event.preventDefault();
 
@@ -218,21 +206,26 @@ export default {
           email: this.user.email,
           phone: this.user.phone,
           aboutme: this.user.aboutme,
+          joindate: this.user.joindate,
         },
         ({ data }) => {
           let msg = "수정 처리시 문제가 발생했습니다.";
           if (data === "success") {
+            this.SET_USER_INFO(this.user);
             msg = "수정이 완료되었습니다.";
           }
           alert(msg);
           // 현재 route를 /list로 변경.
 
-          this.$router.push({ name: "home" });
+          this.moveMypage();
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
+    },
+    moveMypage() {
+      this.$router.push({ name: "mypage" });
     },
   },
 };
