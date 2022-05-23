@@ -102,6 +102,7 @@ export default {
     //   if (this.gugunCode) this.getHouseList(this.gugunCode);
     // },
     searchApt() {
+      console.log(this.dongCode);
       if (this.dongCode) this.getAptList(this.dongCode);
     },
   },
