@@ -37,11 +37,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto renewInfo(String userid) throws Exception {
-	return memberMapper.userInfo(userid);
-	}
-
-	@Override
 	public boolean deleteMember(String userid) {
 		if(memberMapper.deleteMember(userid)) {
 			return true;
