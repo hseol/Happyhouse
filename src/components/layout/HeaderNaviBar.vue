@@ -53,12 +53,11 @@
               variant="primary"
               v-text="userInfo ? userInfo.userid.charAt(0).toUpperCase() : ''"
             ></b-avatar
-            >{{ userInfo.username }}({{ userInfo.userid }})님
-            환영합니다.</b-nav-item
-          >
+            >{{ userInfo.username }}({{ userInfo.userid }})님 환영합니다.
+          </b-nav-item>
           <b-nav-item class="align-self-center"
             ><router-link
-              :to="{ name: 'mypage', params: { userid: userInfo.userid } }"
+              :to="{ name: 'mypage' }"
               class="link align-self-center"
               >마이페이지</router-link
             ></b-nav-item
@@ -99,9 +98,7 @@ const memberStore = "memberStore";
 
 export default {
   name: "HeaderNaviBar",
-  props: {
-    userid: String,
-  },
+
   computed: {
     ...mapState(memberStore, ["isLogin", "userInfo"]),
   },
