@@ -1,12 +1,12 @@
 <template>
   <div id="footer">
-    <b-container id="container" class="p-4">
+    <b-container id="container" class="mt-2 p-2">
       <div class="row">
-        <h3>Happy House</h3>
+        <h4>Happy House</h4>
       </div>
-      <div class="row p-3 mb-3">
+      <div class="row p-3">
         <div class="col-sm-3">
-          <h4>[ Service ]</h4>
+          <h5>[ Service ]</h5>
           <ul>
             <ol>
               매매 검색
@@ -17,7 +17,7 @@
           </ul>
         </div>
         <div class="col-sm-3">
-          <h4>[ House ]</h4>
+          <h5>[ House ]</h5>
           <ul>
             <ol>
               공지사항
@@ -28,7 +28,7 @@
           </ul>
         </div>
         <div class="col-sm-3">
-          <h4>[ Policies ]</h4>
+          <h5>[ Policies ]</h5>
           <ul>
             <ol>
               Terms of Use
@@ -36,11 +36,8 @@
           </ul>
         </div>
         <div class="col-sm-3">
-          <h4>[ About House ]</h4>
+          <h5>[ About House ]</h5>
           <ul>
-            <ol>
-              Company Information
-            </ol>
             <ol>
               Careers
             </ol>
@@ -50,14 +47,13 @@
           </ul>
         </div>
       </div>
-
-      <div id="copyright">
-        <p>
-          Copyright © 2021 Happy house. All rights reserved. Designed by 성성민
-          & 허설
-        </p>
-      </div>
     </b-container>
+    <div id="copyright">
+      <p>
+        Copyright © 2022 Happy house. All rights reserved. Designed by 성성민 &
+        허설
+      </p>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -67,22 +63,28 @@ p {
   font-family: "Montserrat", sans-serif;
   color: wheat;
 }
-#footer {
-  border-top: 5px solid rgb(229, 122, 28);
-  border-bottom: 5px solid rgb(107, 100, 103);
+#container {
+  height: 160px;
 }
-h3 {
-  color: #02070c;
+#footer {
+  border-top: 1px solid rgba(243, 169, 104, 0.136);
+  /* border-bottom: 5px solid rgb(107, 100, 103); */
 }
 h4 {
-  color: #030b14;
+  color: #514d49;
+}
+h5 {
+  /* color: #030b14; */
+  color: #66615b;
 }
 #copyright {
+  position: relative;
   text-align: right;
+  padding-right: 40px;
 }
 ol,
 ul {
-  color: #433905;
+  color: #4b3d2c;
   margin: 0;
   padding: 0;
 }
