@@ -82,6 +82,7 @@ export default {
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "CLEAR_DONG_LIST",
+      "SET_HOUSE_LIST",
     ]),
     // sidoList() {
     //   this.getSido();
@@ -103,7 +104,9 @@ export default {
     // },
     searchApt() {
       console.log(this.dongCode);
-      if (this.dongCode) this.getAptList(this.dongCode);
+      if (this.dongCode) {
+        this.getAptList(this.dongCode);
+      }
     },
   },
 };

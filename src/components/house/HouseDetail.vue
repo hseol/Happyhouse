@@ -40,11 +40,12 @@ const houseStore = "houseStore";
 export default {
   name: "HouseDetail",
   computed: {
-    ...mapState(houseStore, ["house"]),
+    ...mapState(houseStore, ["house", "houses"]),
     // house() {
     //   return this.$store.state.house;
     // },
   },
+
   filters: {
     price(value) {
       if (!value) return value;

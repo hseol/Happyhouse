@@ -14,6 +14,7 @@ const houseStore = {
     dongs: [{ value: null, text: "읍면동 선택하세요" }],
     houses: [],
     house: null,
+    positions: [],
   },
 
   getters: {},
@@ -48,6 +49,7 @@ const houseStore = {
     },
     SET_DETAIL_HOUSE: (state, house) => {
       state.house = house;
+      console.log(state.house);
     },
   },
 
@@ -60,7 +62,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     getGugun: ({ commit }, sidoCode) => {
@@ -75,7 +77,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     getDong: ({ commit }, gugunCode) => {
@@ -90,7 +92,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
 
@@ -107,7 +109,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     detailHouse: ({ commit }, house) => {

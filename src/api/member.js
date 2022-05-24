@@ -22,7 +22,7 @@ async function findById(userid, success, fail) {
 
 async function modifyMember(user, success, fail) {
   await api
-    .put(`/user/${user.userid}`, JSON.stringify(user))
+    .post(`/user/${user.userid}`, JSON.stringify(user))
     .then(success)
     .catch(fail);
 }
