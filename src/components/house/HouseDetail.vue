@@ -11,7 +11,7 @@
           >아파트 이름 : {{ house.apartmentName }}<br />
           법정동: {{ house.dong }} <br />
           층수 : {{ house.floor }}층<br />
-          전용면적 : {{ house.area }}m²<br />
+          전용면적(평): {{ house.area }}m²  ({{ (parseInt(house.area/3.3058)) }} 평)<br />
         </b-alert>
       </b-col>
       <b-col>
@@ -50,4 +50,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
