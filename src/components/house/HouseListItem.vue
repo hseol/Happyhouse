@@ -13,7 +13,7 @@
         </h5>
         <h6>- 거래금액 :{{ house.recentPrice }}만원</h6>
         <h6>- 건축년도 :{{ house.buildYear }}년</h6>
-        <h6>- 면적 : {{ house.dong }}m²</h6>
+        <h6>- 면적(평) : {{ house.area }}m²  ({{ (parseInt(house.area/3.3058)) }} 평)</h6>
       </b-media-body>
     </b-media>
     <!-- <b-col cols="2" class="text-center align-self-center">
