@@ -53,6 +53,7 @@ export default {
   methods: {
     ...mapActions(houseStore, ["detailHouse"]),
     selectHouse() {
+      console.log(this.house);
       this.detailHouse(this.house);
     },
     colorChange(flag) {

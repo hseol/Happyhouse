@@ -14,7 +14,7 @@
       >
         <b-carousel-slide
           caption="first Slide"
-          img-src="https://cdn.pixabay.com/photo/2016/11/21/15/09/apartments-1845884_1280_.jpg"
+          img-src="https://picsum.photos/1140/480/?image=10"
         ></b-carousel-slide>
         <b-carousel-slide
           caption="Second Slide"

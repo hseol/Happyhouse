@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="house" class="bv-example-row">
+  <b-container v-if="house" v-model="house" class="bv-example-row">
     <b-row class="mb-2 mt-1">
       <!-- <b-col
         ><b-img :src="require('@/assets/apt.png')" fluid-grow></b-img

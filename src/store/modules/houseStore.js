@@ -14,7 +14,7 @@ const houseStore = {
     dongs: [{ value: null, text: "읍면동 선택하세요" }],
     houses: [],
     house: null,
-    positions: [],
+    posi: [],
   },
 
   getters: {},
@@ -35,6 +35,7 @@ const houseStore = {
         state.dongs.push({ value: dong.dongCode, text: dong.dong });
       });
     },
+
     CLEAR_SIDO_LIST: (state) => {
       state.sidos = [{ value: null, text: "시도 선택하세요" }];
     },
@@ -46,10 +47,11 @@ const houseStore = {
     },
     SET_HOUSE_LIST: (state, houses) => {
       state.houses = houses;
+      console.log(houses);
     },
     SET_DETAIL_HOUSE: (state, house) => {
       state.house = house;
-      console.log(state.house);
+      //console.log(state.house);
     },
   },
 
@@ -62,7 +64,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
     getGugun: ({ commit }, sidoCode) => {
@@ -77,7 +79,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
     getDong: ({ commit }, gugunCode) => {
@@ -92,7 +94,7 @@ const houseStore = {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
 
@@ -103,13 +105,13 @@ const houseStore = {
       aptList(
         params,
         (data) => {
-          //console.log(data.data);
+          console.log(data.data);
 
           commit("SET_HOUSE_LIST", data.data);
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
     detailHouse: ({ commit }, house) => {

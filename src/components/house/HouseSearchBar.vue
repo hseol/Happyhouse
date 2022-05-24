@@ -104,6 +104,7 @@ export default {
     // },
     searchApt() {
       console.log(this.dongCode);
+
       if (this.dongCode) {
         this.getAptList(this.dongCode);
       }
