@@ -5,11 +5,11 @@
         <b-table-simple hover responsive>
           <b-thead head-variant="light">
             <b-tr>
-              <b-th>글번호</b-th>
-              <b-th>제목</b-th>
-              <b-th>조회수</b-th>
-              <b-th>작성자</b-th>
-              <b-th>작성일</b-th>
+              <b-th style="width: 10%">번호</b-th>
+              <b-th style="width: 35%">제목</b-th>
+              <b-th style="width: 20%">작성자</b-th>
+              <b-th style="width: 15%">조회수</b-th>
+              <b-th style="width: 20%">작성일</b-th>
             </b-tr>
           </b-thead>
           <tbody>
@@ -30,8 +30,8 @@
                   >{{ article.subject }}</router-link
                 >
               </b-th>
-              <b-td>{{ article.hit }}</b-td>
               <b-td>{{ article.userid }}</b-td>
+              <b-td>{{ article.hit }}</b-td>
               <b-td>{{ article.regtime | dateFormat }}</b-td>
             </b-tr>
           </tbody>

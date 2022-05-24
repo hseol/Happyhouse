@@ -1,17 +1,18 @@
 <template>
-  <b-container class="bv-example-row mt-3">
-    <b-row class="mb-1">
-      <b-col class="text-right">
-        <b-button variant="outline-primary" @click="moveWrite()"
-          >글쓰기</b-button
-        >
-      </b-col>
-    </b-row>
-    <b-row>
+  <div>
+    <b-container class="bv-example-row mt-3">
+      <b-row class="mb-1">
+        <b-col class="text-right">
+          <b-button variant="outline-primary" @click="moveWrite()"
+            >글쓰기</b-button
+          >
+        </b-col>
+      </b-row>
+
       <paginated-list :pageSize="2" :list-array="articles" />
       <!-- <b-col v-else class="text-center">도서 목록이 없습니다.</b-col> -->
-    </b-row>
-  </b-container>
+    </b-container>
+  </div>
 </template>
 
 <script>
