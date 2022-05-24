@@ -17,7 +17,7 @@
 
 <script>
 import { listArticle } from "@/api/board.js";
-import PaginatedList from "./PaginatedList";
+import PaginatedList from "@/components/layout/PaginatedList";
 //import BoardListItem from "@/components/board/item/BoardListItem";
 
 export default {
@@ -44,7 +44,7 @@ export default {
       },
       (error) => {
         console.log(error);
-      }
+      },
     );
   },
   methods: {
