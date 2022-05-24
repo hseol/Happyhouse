@@ -17,7 +17,11 @@
           - 면적 : {{ house.area }}m² ({{ parseInt(house.area / 3.3058) }}
           평)
         </h6>
-        <p><b-icon-calendar3></b-icon-calendar3> {{ house.dealYear }}.{{ house.dealMonth }}.{{ house.dealDay }}</p>
+        <p>
+          <b-icon-calendar3></b-icon-calendar3> {{ house.dealYear }}.{{
+            house.dealMonth
+          }}.{{ house.dealDay }}
+        </p>
       </b-media-body>
     </b-media>
     <!-- <b-col cols="2" class="text-center align-self-center">

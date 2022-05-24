@@ -7,11 +7,11 @@
       <b-col>
         <b-alert show variant="primary">할일 : {{ allTodosCount }}</b-alert>
       </b-col>
-      <b-col>
+      <!-- <b-col>
         <b-alert show variant="success"
           >진행 : {{ unCompletedTodosCount }}</b-alert
         >
-      </b-col>
+      </b-col> -->
       <b-col>
         <b-alert show variant="danger"
           >완료 : {{ completedTodosCount }}</b-alert

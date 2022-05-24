@@ -48,8 +48,11 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto" v-if="userInfo">
-          <b-nav-item class="align-self-center"
-            ><b-avatar
+          <b-nav-item class="align-self-center">
+            <!-- <b-button >Toggle Sidebar</b-button> -->
+            <side-bar />
+            <b-avatar
+              v-b-toggle.sidebar-1
               variant="primary"
               v-text="userInfo ? userInfo.userid.charAt(0).toUpperCase() : ''"
             ></b-avatar
@@ -92,11 +95,13 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import SideBar from "./SideBar.vue";
 // import ms from "@/store/modules/memberStore";
 
 const memberStore = "memberStore";
 
 export default {
+  components: { SideBar },
   name: "HeaderNaviBar",
 
   computed: {

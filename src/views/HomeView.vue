@@ -6,14 +6,15 @@
     <b-row>
       <b-carousel
         id="carousel-fade"
-        style="text-shadow: 0px 0px 2px #000;width=100%;"
+        style="text-shadow: 0px 0px 2px #000"
         fade
         indicators
+        img-width="1140"
         img-height="480"
       >
         <b-carousel-slide
-          caption="First Slide"
-          img-src="https://picsum.photos/1140/480/?image=10"
+          caption="first Slide"
+          img-src="https://cdn.pixabay.com/photo/2016/11/21/15/09/apartments-1845884_1280_.jpg"
         ></b-carousel-slide>
         <b-carousel-slide
           caption="Second Slide"
