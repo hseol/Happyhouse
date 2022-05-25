@@ -1,126 +1,110 @@
 <template>
-  <b-row>
-    <b-col>
-      <b-card class="card" title="내 정보">
-        <div>
-          <form @submit.prevent>
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="4">
-                <b-form-group
-                  label="이름"
-                  label-for="username"
-                  class="formlabel"
-                >
-                  <div class="formstyle">
-                    {{ user.username }}
-                  </div>
-                </b-form-group>
-              </b-col>
-              <b-col md="6">
-                <b-form-group
-                  label="핸드폰"
-                  label-for="phone"
-                  class="formlabel"
-                >
-                  <div class="formstyle">
-                    {{ user.phone }}
-                  </div>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="5">
-                <b-form-group
-                  label="아이디"
-                  label-for="userid"
-                  class="formlabel"
-                >
-                  <div class="formstyle">
-                    {{ user.userid }}
-                  </div>
-                </b-form-group>
-              </b-col>
+  <b-container>
+    <b-col md="1"></b-col>
+    <b-card class="card" title="내 정보">
+      <div>
+        <form @submit.prevent>
+          <b-row>
+            <b-col md="1"></b-col>
+            <b-col md="4">
+              <b-form-group label="이름" label-for="username" class="formlabel">
+                <div class="formstyle">
+                  {{ user.username }}
+                </div>
+              </b-form-group>
+            </b-col>
+            <b-col md="6">
+              <b-form-group label="핸드폰" label-for="phone" class="formlabel">
+                <div class="formstyle">
+                  {{ user.phone }}
+                </div>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col md="1"></b-col>
+            <b-col md="5">
+              <b-form-group label="아이디" label-for="userid" class="formlabel">
+                <div class="formstyle">
+                  {{ user.userid }}
+                </div>
+              </b-form-group>
+            </b-col>
 
-              <b-col md="5">
-                <b-form-group
-                  label="비밀번호"
-                  label-for="password"
-                  class="formlabel"
-                >
-                  <div class="formstyle">쉿~! 비밀이야</div>
-                </b-form-group>
-              </b-col>
-              <b-col md="1"></b-col>
-            </b-row>
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="10">
-                <b-form-group label="Email" label-for="email" class="formlabel">
-                  <div class="formstyle">
-                    {{ user.email }}
-                  </div>
-                </b-form-group>
-              </b-col>
-            </b-row>
-
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="10">
-                <b-form-group
-                  label="가입일자"
-                  label-for="joindate"
-                  class="formlabel"
-                >
-                  <div class="formstyle">
-                    {{ user.joindate }}
-                  </div>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-row
-              ><b-col md="1"></b-col>
-              <!--<b-col md="10"><favorite-location /></b-col
-            >--></b-row
-            >
-            <b-row>
-              <b-col md="1"></b-col>
-              <b-col md="10">
-                <b-form-group
-                  label="자기소개"
-                  label-for="description"
-                  class="formlabel"
-                >
-                  <div class="textarea">
-                    {{ user.aboutme }}
-                  </div>
-                </b-form-group>
-              </b-col>
-              <b-col md="1"></b-col>
-            </b-row>
-            <div class="text-center">
-              <b-button class="updateBtn" round @click="moveModify">
-                정보수정
-              </b-button>
-              &nbsp;&nbsp;
-              <b-button variant="danger" @click="deleteMember"
-                >회원탈퇴</b-button
+            <b-col md="5">
+              <b-form-group
+                label="비밀번호"
+                label-for="password"
+                class="formlabel"
               >
-            </div>
-            <div class="clearfix"></div>
-          </form>
-        </div>
-      </b-card>
-    </b-col>
-    <b-col><todo-view></todo-view></b-col>
-  </b-row>
+                <div class="formstyle">쉿~! 비밀이야</div>
+              </b-form-group>
+            </b-col>
+            <b-col md="1"></b-col>
+          </b-row>
+          <b-row>
+            <b-col md="1"></b-col>
+            <b-col md="10">
+              <b-form-group label="Email" label-for="email" class="formlabel">
+                <div class="formstyle">
+                  {{ user.email }}
+                </div>
+              </b-form-group>
+            </b-col>
+          </b-row>
+
+          <b-row>
+            <b-col md="1"></b-col>
+            <b-col md="10">
+              <b-form-group
+                label="가입일자"
+                label-for="joindate"
+                class="formlabel"
+              >
+                <div class="formstyle">
+                  {{ user.joindate }}
+                </div>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row
+            ><b-col md="1"></b-col>
+            <!--<b-col md="10"><favorite-location /></b-col
+            >--></b-row
+          >
+          <b-row>
+            <b-col md="1"></b-col>
+            <b-col md="10">
+              <b-form-group
+                label="자기소개"
+                label-for="description"
+                class="formlabel"
+              >
+                <div class="textarea">
+                  {{ user.aboutme }}
+                </div>
+              </b-form-group>
+            </b-col>
+            <b-col md="1"></b-col>
+          </b-row>
+          <div class="text-center">
+            <b-button class="updateBtn" round @click="moveModify">
+              정보수정
+            </b-button>
+            &nbsp;&nbsp;
+            <b-button variant="danger" @click="deleteMember">회원탈퇴</b-button>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </b-card>
+    <b-col md="1"></b-col>
+  </b-container>
 </template>
 
 <script>
 import { mapMutations, mapState } from "vuex";
 import { deleteMember } from "@/api/member";
-import TodoView from "@/views/TodoView.vue";
 //import FavoriteLocation from "./FavoriteLocation.vue";
 const memberStore = "memberStore";
 
@@ -130,7 +114,6 @@ export default {
     userid: String,
   },
   components: {
-    TodoView,
     // FavoriteLocation,
   },
   data() {

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <header-bar></header-bar>
+    <ether-test />
+    <!--<map-view /> -->
     <router-view />
     <footer-bar></footer-bar>
   </div>
@@ -9,12 +11,16 @@
 <script>
 import HeaderBar from "@/components/layout/HeaderNaviBar.vue";
 import FooterBar from "@/components/layout/FooterNaviBar.vue";
+import EtherTest from "./views/EtherTest.vue";
+//import MapView from "./views/MapView.vue";
 
 export default {
   name: "App",
   components: {
     HeaderBar,
     FooterBar,
+    EtherTest,
+    // MapView,
   },
 };
 </script>

@@ -1,10 +1,13 @@
 <template>
   <div>
     <div id="map" style="width: 100%; height: 500px; margin: auto"></div>
-    <div>{{ this.$store.state.houses }}</div>
+    <!-- <button @click="displayMarker(markerPositions)">marker set 1</button> -->
+    <div v-if="this.$store.state.houses.length > 0">
+      {{ this.$store.state.houses[0].apartmentName }}
+    </div>
     <!--값이 실시간으로 바뀌는지 보려면 이렇게 보는게 제일 정확해서 div 하나 팠음.. 최종적으로는 지울 것!!! -->
 
-    <button @click="initMap">지도보기</button>
+    <button @click="makeList">이벤트발생</button>
     <!--필요에 따라서 버튼을 만들어 적용하는 것도 나쁘지 않음... -->
   </div>
 </template>
@@ -17,19 +20,12 @@ export default {
   name: "HouseMap",
   data() {
     return {
-      markerPositions1: [
-        [33.452278, 126.567803],
-        [33.452671, 126.574792],
-        [33.451744, 126.572441],
-      ],
-      posi: [],
+      posi: {},
       markers: [],
       infowindow: null,
+      map: null,
     };
   },
-  // props: {
-  //   houses: Object,
-  // },
 
   computed: {
     ...mapState(houseStore, ["house", "houses"]),
@@ -42,7 +38,7 @@ export default {
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
       script.src =
-        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=6a435b67598819acc51c97c1d6599d3b&libraries=services";
+        "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=929551aadfc7f7f042a99f58cbd97041&libraries=services";
       document.head.appendChild(script);
     }
   },
@@ -50,104 +46,54 @@ export default {
   methods: {
     makeList() {
       var posi = [];
-      let lat = 0;
-      let lng = 0;
-
-      this.houses.forEach((house) => {
-        lat = Number(house.lat);
-        lng = Number(house.lng);
-        this.posi.push([lat, lng]); //배열형식이 안맞는것 같다...
-      });
-      console.log(posi);
-    },
-    set() {
-      // this.$store.commit("SET_HOUSE_LIST", this.$store.state.houses);
       this.houses = this.$store.state.houses;
-      //console.log(this.houses);
-      //console.log(typeof this.houses[0].lat);
-      this.makeList();
+      this.houses.forEach((house) => {
+        posi.push({
+          title: house.apartmentName,
+          latlng: new kakao.maps.LatLng(house.lat, house.lng),
+        });
+      });
+
+      this.posi = posi;
+      console.log(this.posi);
+      //console.log(new kakao.maps.LatLng(126.640030500086, 37.4808144576815));
+
+      var imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+      var bounds = new kakao.maps.LatLngBounds();
+      for (var i = 0; i < posi.length; i++) {
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        //   // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+          map: this.map, // 마커를 표시할 지도
+          position: posi[i].latlng, // 마커를 표시할 위치
+          title: posi[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커 이미지
+        });
+
+        marker.setMap(this.map);
+        bounds.extend(posi[i].latlng);
+      }
+
+      this.map.setBounds(bounds);
     },
 
     //////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
 
     initMap() {
-      const container = document.getElementById("map");
-      const options = {
-        center: new kakao.maps.LatLng(37.49959, 127.026372),
-        level: 5,
-      };
-      ///////////////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////////////
-      // var posi = [];
-      let lat = 0;
-      let lng = 0;
-      this.houses = this.$store.state.houses;
-      /////////////////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////////
-      //
-      // this.houses.forEach((house) => {
-      //   lat = Number(house.lat);
-      //   lng = Number(house.lng);
-      //   console.log(lat);
-      //   console.log(lng);
-      //   this.posi.push([lat, lng]);
-      // });
-      // console.log(this.posi);
-      ///////////////////////////////////////////////////////////////
-      lat = Number(this.houses[0].lat);
-      lng = Number(this.houses[0].lng);
-      //posi = [lat, lng];
-      console.log(lat);
-      console.log(lng);
-
-      var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
-      var markerPosition = new kakao.maps.LatLng(lat, lng);
-      var marker = new kakao.maps.Marker({
-        position: markerPosition,
-      });
-      marker.setMap(map);
-      //////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////////////////
-
-      //지도 객체를 등록합니다.
-      //지도 객체는 반응형 관리 대상이 아니므로 initMap에서 선언합니다.
-      // var map = new kakao.maps.Map(container, options);
-      // if (this.markers.length > 0) {
-      //   this.markers.forEach((marker) => marker.setMap(null));
-      //   const positions = posi.map(
-      //     (position) => new kakao.maps.LatLng(...position)
-      //   );
-      //   if (positions.length > 0) {
-      //     console.log("호출");
-      //     this.markers = positions.map(
-      //       (position) =>
-      //         new kakao.maps.Marker({
-      //           map: this.map,
-      //           position,
-      //         })
-      //     );
-
-      //     const bounds = positions.reduce(
-      //       (bounds, latlng) => bounds.extend(latlng),
-      //       new kakao.maps.LatLngBounds()
-      //     );
-
-      //     this.map.setBounds(bounds);
-      //   }
-      //   // 마커가 표시될 위치입니다
-      //   var markerPosition = new kakao.maps.LatLng(lat, lng);
-
-      //   // 마커를 생성합니다
-      //   var marker = new kakao.maps.Marker({
-      //     position: markerPosition,
-      //   });
-
-      //   // 마커가 지도 위에 표시되도록 설정합니다
-      //   marker.setMap(map);
-      // }
-      //////////////////////////////////////////////////
-      ////////////////////////////////////////////////////
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+      this.map = map;
     },
   },
 };

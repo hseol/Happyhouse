@@ -9,7 +9,7 @@
         </b-col>
       </b-row>
 
-      <paginated-list :pageSize="2" :list-array="articles" />
+      <qna-paginated-list :pageSize="2" :list-array="articles" />
       <!-- <b-col v-else class="text-center">도서 목록이 없습니다.</b-col> -->
     </b-container>
   </div>
@@ -17,13 +17,13 @@
 
 <script>
 import { listArticle } from "@/api/qna.js";
-import PaginatedList from "@/components/layout/PaginatedList";
+import QnaPaginatedList from ".//QnaPaginatedList";
 //import BoardListItem from "@/components/board/item/BoardListItem";
 
 export default {
   name: "qnaList",
   components: {
-    PaginatedList,
+    QnaPaginatedList,
   },
   data() {
     return {
@@ -44,7 +44,7 @@ export default {
       },
       (error) => {
         console.log(error);
-      }
+      },
     );
   },
   methods: {

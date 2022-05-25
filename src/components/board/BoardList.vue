@@ -9,7 +9,7 @@
         </b-col>
       </b-row>
 
-      <paginated-list :pageSize="2" :list-array="articles" />
+      <board-paginated-list :pageSize="2" :list-array="articles" />
       <!-- <b-col v-else class="text-center">도서 목록이 없습니다.</b-col> -->
     </b-container>
   </div>
@@ -17,13 +17,13 @@
 
 <script>
 import { listArticle } from "@/api/board.js";
-import PaginatedList from "@/components/layout/PaginatedList";
+import BoardPaginatedList from "./BoardPaginatedList";
 //import BoardListItem from "@/components/board/item/BoardListItem";
 
 export default {
   name: "boardList",
   components: {
-    PaginatedList,
+    BoardPaginatedList,
   },
   data() {
     return {

@@ -6,7 +6,7 @@
           todo.title
         }}</span>
       </b-col>
-      <b-col class="p-2"
+      <b-col class="p-2" cols="1"
         ><b-button variant="danger" @click="cancelTodo">X</b-button></b-col
       >
     </b-row>
