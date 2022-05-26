@@ -9,7 +9,13 @@
       <b-col class="text-left">
         <b-button variant="outline-primary" @click="listArticle">목록</b-button>
       </b-col>
-      <b-col class="text-right">
+      <b-col
+        v-if="
+          (this.user.userid == this.article.userid) |
+            (this.user.userid === 'admin')
+        "
+        class="text-right"
+      >
         <b-button
           variant="outline-info"
           size="sm"
@@ -43,12 +49,15 @@
 <script>
 // import moment from "moment";
 import { getArticle, deleteArticle } from "@/api/qna";
+import { mapState } from "vuex";
+import memberStore from "@/store/modules/memberStore";
 
 export default {
   name: "QnaDetail",
   data() {
     return {
       article: {},
+      user: {},
     };
   },
   computed: {
@@ -57,8 +66,10 @@ export default {
         return this.article.content.split("\n").join("<br>");
       return "";
     },
+    ...mapState(memberStore, ["userInfo"]),
   },
   created() {
+    this.user = this.$store.state.memberStore.userInfo;
     getArticle(
       this.$route.params.articleno,
       (response) => {
@@ -66,7 +77,7 @@ export default {
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
-      },
+      }
     );
   },
   methods: {
@@ -83,7 +94,7 @@ export default {
     deleteArticle() {
       if (confirm("정말로 삭제?")) {
         deleteArticle(this.article.articleno, () => {
-          this.$router.push({ name: "qnaist" });
+          this.$router.push({ name: "qnaList" });
         });
       }
     },

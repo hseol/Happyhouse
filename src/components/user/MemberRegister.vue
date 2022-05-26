@@ -21,7 +21,6 @@
             </b-form-group>
             <b-form-group label="ID :" label-for="userid">
               <b-form-input
-                @keyup="availableId"
                 id="userid"
                 v-model="user.userid"
                 type="text"
@@ -123,14 +122,6 @@ export default {
         }
       );
       console.log(this.user.userid);
-    },
-
-    async checkDuplicate() {
-      this.availableId = false;
-      //이메일 유효성을 검사한다.
-      if (this.user.userid.length >= 6) {
-        this.availableId = true;
-      }
     },
 
     onSubmit(event) {

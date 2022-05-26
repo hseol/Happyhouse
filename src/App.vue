@@ -13,6 +13,7 @@
 import HeaderBar from "@/components/layout/HeaderNaviBar.vue";
 import FooterBar from "@/components/layout/FooterNaviBar.vue";
 import MiddleBar from "@/components/layout/MiddleNaviBar.vue";
+
 // import EtherTest from "./views/EtherTest.vue";
 
 //mport EtherTest from "./views/EtherTest.vue";
@@ -45,5 +46,17 @@ a:hover {
 
 a.router-link-exact-active {
   color: #68b3c8;
+}
+
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#app {
+  font-family: "GangwonEdu_OTFBoldA";
 }
 </style>
