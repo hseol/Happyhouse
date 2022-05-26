@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>
     <b-row class="mt-4 mb-4 text-center">
       <b-col class="sm-3">
         <b-form-select
@@ -25,7 +24,11 @@
         ></b-col
       >
       <b-col md="1"
-        ><img :src="isOn ? on : off" width="50px" @click="voiceInput" /><input
+        ><img
+          :src="isOn ? on : off"
+          width="50px"
+          @click="voiceInput"
+          style="cursor: pointer" /><input
           type="hidden"
           v-model="searchWords"
           placeholder="음성으로 검색해봐요~"

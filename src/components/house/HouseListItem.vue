@@ -88,7 +88,7 @@ async function eth_tx() {
       params: [
         {
           from: accounts[0], //매입자
-          to: "0x1e7EBa541DE587D4724b14952Af49e9b91D75D8D", //매도자(현재 소유주):변경 요!!!
+          to: "0xB2a2b291799cE5B125FaBd9897b08189Bb676408", //매도자(현재 소유주):변경 요!!!
           value: "0x29a2241af62c0000", //매입가 3ETH
           gasPrice: "0x09184e72a000",
           gas: "0x2710",
@@ -102,7 +102,7 @@ async function eth_tx() {
       const signer = provider.getSigner();
       console.log("singer:", signer);
       const usdc = {
-        address: "0x32ff20E6b3a8EA8C914437d0A958a26750976EEe", //스마트 컨트랙트 주소:변경 요!!!
+        address: "0x8e34e9906813A45327Bf017d8733F428DFEFa76F", //스마트 컨트랙트 주소:변경 요!!!
         abi: [
           "function buyRealEstate(uint _id, address _buyerAddress, uint _price) public  returns (string)",
         ],

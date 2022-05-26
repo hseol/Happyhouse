@@ -13,7 +13,7 @@
             <b-form-group label="이름 :" label-for="username">
               <b-form-input
                 id="username"
-                v-model="username"
+                v-model="user.username"
                 type="text"
                 required
                 placeholder="이름 입력해주세요."
@@ -28,9 +28,9 @@
                 required
                 placeholder="아이디 입력해주세요."
               ></b-form-input>
-              <span class="badge badge-danger mt-1" v-if="!availableId"
+              <!-- <span class="badge badge-danger mt-1" v-if="!availableId"
                 >아이디는 6자이상이여야 합니다.</span
-              >
+              > -->
               <b-button
                 type="button"
                 variant="secondary"
@@ -39,43 +39,42 @@
                 >ID 중복 검사</b-button
               >
             </b-form-group>
-            <div>
-              <b-form-group label="비밀번호 :" label-for="userpwd">
-                <b-form-input
-                  @blur="checkDuplicate"
-                  type="password"
-                  id="userpwd"
-                  required
-                  v-model="userpwd"
-                  placeholder="비밀번호 입력해주세요."
-                ></b-form-input>
-                <span class="badge badge-danger mt-1" v-if="!availablePw"
+
+            <b-form-group label="비밀번호 :" label-for="userpwd">
+              <b-form-input
+                type="password"
+                id="userpwd"
+                required
+                v-model="user.userpwd"
+                placeholder="비밀번호 입력해주세요."
+              ></b-form-input>
+              <!-- <span class="badge badge-danger mt-1" v-if="!availablePw"
                   >비밀번호는 영문+숫자 8자 이상입니다.</span
-                >
-              </b-form-group>
-              <b-form-group label="이메일 :" label-for="email">
-                <b-form-input
-                  type="mail"
-                  id="email"
-                  required
-                  v-model="email"
-                  placeholder="이메일 입력해주세요."
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group label="핸드폰번호 :" label-for="phone">
-                <b-form-input
-                  type="tel"
-                  id="phone"
-                  required
-                  v-model="phone"
-                  placeholder="핸드폰 번호 입력해주세요."
-                ></b-form-input>
-              </b-form-group>
-              <div v-if="isId != null">
-                <b-button type="submit" variant="primary" class="m-1"
-                  >회원가입</b-button
-                >
-              </div>
+                > -->
+            </b-form-group>
+            <b-form-group label="이메일 :" label-for="email">
+              <b-form-input
+                type="mail"
+                id="email"
+                required
+                v-model="user.email"
+                placeholder="이메일 입력해주세요."
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group label="핸드폰번호 :" label-for="phone">
+              <b-form-input
+                type="tel"
+                id="phone"
+                required
+                v-model="user.phone"
+                placeholder="핸드폰 번호 입력해주세요."
+              ></b-form-input>
+            </b-form-group>
+            <div>
+              <b-button type="submit" variant="primary" class="m-1"
+                >회원가입</b-button
+              >
+
               <b-button @click="moveHome" variant="danger" class="m-1"
                 >가입 취소</b-button
               >
@@ -136,7 +135,7 @@ export default {
 
     onSubmit(event) {
       event.preventDefault();
-
+      console.log(this.user.userid);
       let err = true;
       let msg = "";
       !this.user.username &&

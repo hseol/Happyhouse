@@ -9,7 +9,7 @@
         </b-col>
       </b-row>
 
-      <qna-paginated-list :pageSize="2" :list-array="articles" />
+      <qna-paginated-list :pageSize="5" :list-array="articles" />
       <!-- <b-col v-else class="text-center">도서 목록이 없습니다.</b-col> -->
     </b-container>
   </div>
@@ -44,7 +44,7 @@ export default {
       },
       (error) => {
         console.log(error);
-      },
+      }
     );
   },
   methods: {

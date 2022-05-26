@@ -13,16 +13,19 @@
           img-width="100%"
         >
           <b-carousel-slide
-            caption="first Slide"
-            img-src="https://picsum.photos/1140/480/?image=10"
+            class="pic"
+            caption="행복한 우리집 찾기"
+            img-src="https://image.newdaily.co.kr/site/data/img/2019/10/08/2019100800016_0.jpg"
           ></b-carousel-slide>
           <b-carousel-slide
-            caption="Second Slide"
-            img-src="https://picsum.photos/1140/480/?image=12"
+            class="pic"
+            caption=""
+            img-src="https://cdn.pixabay.com/photo/2016/11/23/00/55/burn-1851563_960_720.jpg"
           ></b-carousel-slide>
           <b-carousel-slide
-            caption="Third Slide"
-            img-src="https://picsum.photos/1140/480/?image=22"
+            class="pic"
+            caption="꿈의 집으로 놀러오세요!"
+            img-src="https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041_960_720.jpg"
           ></b-carousel-slide>
         </b-carousel>
       </b-row>
@@ -62,5 +65,9 @@ export default {
     rgba(255, 255, 255, 0) 70%,
     rgba(72, 190, 233, 0.3) 30%
   );
+}
+.pic {
+  width: 1140px;
+  height: 480px;
 }
 </style>

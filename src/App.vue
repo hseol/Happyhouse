@@ -15,7 +15,7 @@ import FooterBar from "@/components/layout/FooterNaviBar.vue";
 import MiddleBar from "@/components/layout/MiddleNaviBar.vue";
 // import EtherTest from "./views/EtherTest.vue";
 
-import EtherTest from "./views/EtherTest.vue";
+//mport EtherTest from "./views/EtherTest.vue";
 
 //import MapView from "./views/MapView.vue";
 
