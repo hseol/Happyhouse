@@ -47,9 +47,24 @@
                 v-model="user.userpwd"
                 placeholder="비밀번호 입력해주세요."
               ></b-form-input>
-              <!-- <span class="badge badge-danger mt-1" v-if="!availablePw"
-                  >비밀번호는 영문+숫자 8자 이상입니다.</span
-                > -->
+              <span v-if="!isValid" class="badge badge-danger mt-1"
+                >비밀번호는 영문,숫자,특수문자 혼용으로 8자 이상 20자 이하만
+                가능합니다.</span
+              >
+            </b-form-group>
+            <b-form-group label="비밀번호확인 :" label-for="userpwdConfirm">
+              <b-form-input
+                type="password"
+                id="userpwdConfirm"
+                required
+                v-model="user.userpwdConfirm"
+                placeholder="비밀번호 다시 입력해주세요."
+              ></b-form-input>
+              <span v-if="!pwdConfirm" class="badge badge-danger mt-1"
+                >비밀번호가 일치하지 않습니다.</span
+              ><span v-else class="badge badge-info mt-1"
+                >두 비밀번호가 일치합니다.</span
+              >
             </b-form-group>
             <b-form-group label="이메일 :" label-for="email">
               <b-form-input
@@ -99,11 +114,26 @@ export default {
         username: "",
         userid: "",
         userpwd: "",
+        userConfirm: "",
         email: "",
         phone: "",
       },
       isId: null,
     };
+  },
+  computed: {
+    isValid() {
+      let reg_pw = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,20}$/;
+      //비밀번호 영대소문자 최소 1개의 숫자와 특수문자 포함
+      return reg_pw.test(this.user.userpwd);
+    },
+
+    pwdConfirm() {
+      console.log(this.user.userpwd);
+      console.log(this.user.userpwdConfirm);
+
+      return this.user.userpwd === this.user.userpwdConfirm;
+    },
   },
   methods: {
     checkId() {
@@ -113,7 +143,6 @@ export default {
           let msg = "이 아이디는 이미 사용중입니다.";
           if (data === "success") {
             msg = "이 아이디는 사용가능합니다.";
-            this.isId = 1;
           }
           alert(msg);
         },
