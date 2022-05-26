@@ -87,13 +87,36 @@
             </b-col>
             <b-col md="1"></b-col>
           </b-row>
-          <div class="text-center">
-            <b-button class="updateBtn" round @click="moveModify">
-              정보수정
-            </b-button>
-            &nbsp;&nbsp;
-            <b-button variant="danger" @click="deleteMember">회원탈퇴</b-button>
-          </div>
+          <span class="text-center">
+            <div>
+              <b-button class="updateBtn" round v-b-modal.modal-1
+                >정보수정</b-button
+              >
+
+              <b-modal id="modal-1" title="회원정보수정">
+                <form ref="form" @submit.stop.prevent="handleSubmit">
+                  <b-form-group
+                    label="비밀번호를 입력하세요 "
+                    label-for="pwd-input"
+                    invalid-feedback="비밀번호 입력 필수!"
+                    :state="pwdState"
+                  >
+                    <b-form-input
+                      id="pwd-input"
+                      v-model="checkpwd"
+                      :state="pwdState"
+                      type="password"
+                      required
+                    ></b-form-input>
+                  </b-form-group>
+                </form>
+              </b-modal>
+              &nbsp;&nbsp;
+              <b-button variant="danger" @click="deleteMember"
+                >회원탈퇴</b-button
+              >
+            </div>
+          </span>
           <div class="clearfix"></div>
         </form>
       </div>
@@ -105,6 +128,7 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import { deleteMember } from "@/api/member";
+//import ModalModal from "../layout/ModalModal.vue";
 //import FavoriteLocation from "./FavoriteLocation.vue";
 const memberStore = "memberStore";
 
@@ -113,12 +137,12 @@ export default {
   props: {
     userid: String,
   },
-  components: {
-    // FavoriteLocation,
-  },
+
   data() {
     return {
       user: {},
+      checkpwd: "",
+      pwdState: null,
     };
   },
   computed: {
@@ -147,6 +171,42 @@ export default {
           sessionStorage.removeItem("access-token");
           alert("레알루다가 삭제됐당께~~");
           if (this.$route.path != "/") this.$router.push({ name: "home" });
+        });
+      }
+    },
+
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity();
+      this.pwdState = valid;
+      return valid;
+    },
+    resetModal() {
+      this.checkpwd = "";
+      this.pwdState = null;
+    },
+    handleOk(bvModalEvent) {
+      // Prevent modal from closing
+      bvModalEvent.preventDefault();
+      // Trigger submit handler
+      this.handleSubmit();
+    },
+    handleSubmit() {
+      //서브밋 핸들러군
+      // Exit when the form isn't valid
+      if (!this.checkFormValidity()) {
+        return;
+      }
+      // Push the name to submitted names
+      //여기서 다 맞다면 행동해야할 것!
+      if (this.checkpwd === this.userInfo.userpwd) {
+        //수정하기로 갈것
+        alert("확인되었습니다.");
+        this.moveModify();
+      } else {
+        alert("땡!");
+        // Hide the modal manually
+        this.$nextTick(() => {
+          this.$bvModal.hide("modal-prevent-closing");
         });
       }
     },
@@ -199,5 +259,8 @@ export default {
 input[type="text"]:disabled {
   background: #fffcf5;
   font-weight: bolder;
+}
+#modal-1 {
+  font-family: "GangwonEdu_OTFBoldA";
 }
 </style>
