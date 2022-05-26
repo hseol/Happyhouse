@@ -145,7 +145,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
 
@@ -200,7 +200,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
     moveHome() {

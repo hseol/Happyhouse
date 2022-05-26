@@ -187,9 +187,6 @@ export default {
   computed: {
     ...mapState(memberStore, ["userInfo"]),
     ...mapState(houseStore, ["sidos", "guguns", "dongs"]),
-    function() {
-      console.log(this.gugunName);
-    },
   },
   created() {
     this.user = this.userInfo;
@@ -281,7 +278,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        }
+        },
       );
     },
     moveMypage() {

@@ -79,7 +79,7 @@ export default {
       },
       (error) => {
         console.log("삭제시 에러발생!!", error);
-      }
+      },
     );
   },
   methods: {

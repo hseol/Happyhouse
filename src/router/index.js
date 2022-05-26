@@ -32,11 +32,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/auth",
-    name: "test",
-    component: () => import("@/views/TestView.vue"),
-  },
-  {
     path: "/user",
     name: "user",
     component: () => import("@/views/MemberView.vue"),
@@ -138,12 +133,6 @@ const routes = [
         beforeEnter: onlyAuthUser,
         component: () => import("@/components/qna/QnaModify.vue"),
       },
-      // {
-      //   path: "delete/:articleno",
-      //   name: "qnaDelete",
-      //   beforeEnter: onlyAuthUser,
-      //   component: () => import("@/components/qna/QnaDelete.vue"),
-      // },
     ],
   },
 ];
