@@ -15,8 +15,8 @@ async function login(user, success, fail) {
     .catch(fail);
 }
 
-async function checkId(userid, success, fail) {
-  await api.get(`/user/idcheck`, userid).then(success).catch(fail);
+async function checkId(ckId, success, fail) {
+  await api.get(`/user/idcheck`, ckId).then(success).catch(fail);
 }
 async function findById(userid, success, fail) {
   api.defaults.headers["access-token"] = sessionStorage.getItem("access-token");

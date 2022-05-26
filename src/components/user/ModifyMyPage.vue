@@ -16,8 +16,28 @@
               </b-form-input>
             </b-form-group>
           </b-col>
-          <b-col md="7"></b-col>
+          <b-col class="text-center">
+            <b-form-group label="관심지역" label-for="favlo" class="formlabel">
+              <span>
+                <b-form-select
+                  style="width: 120px"
+                  v-model="sidoCode"
+                  :options="sidos"
+                  @change="gugunList"
+                ></b-form-select>
+                <b-form-select
+                  style="width: 120px"
+                  v-model="gugunCode"
+                  :options="guguns"
+                ></b-form-select>
+                &nbsp;&nbsp;
+                <!-- <b-button @click="addFavlo">관심지역설정!</b-button> -->
+              </span>
+            </b-form-group>
+          </b-col>
+          <b-col md="1"></b-col>
         </b-row>
+
         <b-row>
           <b-col md="1"></b-col>
           <b-col md="5">
@@ -125,11 +145,13 @@
           </b-col>
           <b-col md="1"></b-col>
         </b-row>
+
         <div class="text-center">
           <b-button class="updateBtn" type="submit" round> 수정하기 </b-button>
           &nbsp;&nbsp;
           <b-button variant="danger" @click="moveMypage">수정취소</b-button>
         </div>
+
         <div class="clearfix"></div>
       </b-form>
     </div>
@@ -138,9 +160,10 @@
 
 <script>
 import { modifyMember } from "@/api/member";
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
+import FavoriteLocation from "./FavoriteLocation.vue";
 const memberStore = "memberStore";
-
+const houseStore = "houseStore";
 export default {
   name: "ModifyMyPage",
   data() {
@@ -153,16 +176,53 @@ export default {
         phone: "",
         aboutme: "",
       },
+      sidoCode: null,
+      gugunCode: null,
+      dongCode: null,
     };
+  },
+  conponents: {
+    FavoriteLocation,
   },
   computed: {
     ...mapState(memberStore, ["userInfo"]),
+    ...mapState(houseStore, ["sidos", "guguns", "dongs"]),
+    function() {
+      console.log(this.gugunName);
+    },
   },
   created() {
     this.user = this.userInfo;
+    this.CLEAR_SIDO_LIST();
+    this.getSido();
   },
   methods: {
     ...mapMutations(memberStore, ["SET_USER_INFO"]),
+    ...mapActions(houseStore, [
+      "getSido",
+      "getGugun",
+      "getDong",
+      //"getDong,
+    ]),
+    ...mapMutations(houseStore, [
+      "CLEAR_SIDO_LIST",
+      "CLEAR_GUGUN_LIST",
+      "CLEAR_DONG_LIST",
+      "SET_HOUSE_LIST",
+      "SET_DONG_LIST",
+    ]),
+    gugunList() {
+      console.log(this.sidoCode);
+      this.CLEAR_GUGUN_LIST();
+      this.gugunCode = null;
+      if (this.sidoCode) this.getGugun(this.sidoCode);
+    },
+    dongList() {
+      console.log(this.gugunCode);
+      this.CLEAR_DONG_LIST();
+      this.dongCode = null;
+      if (this.gugunCode) this.getDong(this.gugunCode);
+    },
     onSubmit(event) {
       event.preventDefault();
 
@@ -221,7 +281,7 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     moveMypage() {

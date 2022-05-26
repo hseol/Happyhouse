@@ -42,10 +42,15 @@
           >
 
           <b-nav-item href="#">
-            <b-icon icon="calendar-check" font-scale="1.5"></b-icon>
-            <div id="cafe">
-              <button @click="onClickRedirect()">카페주문</button>
-            </div>
+            <span><b-icon icon="cup-straw" font-scale="1.5"></b-icon></span>
+            <span id="cafe">
+              <button
+                @click="onClickRedirect()"
+                style="border: none; background-color: none"
+              >
+                카페주문
+              </button>
+            </span>
           </b-nav-item>
         </b-navbar-nav>
 
