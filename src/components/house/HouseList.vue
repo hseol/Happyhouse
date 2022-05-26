@@ -49,15 +49,12 @@ export default {
       house: {},
     };
   },
-  created() {
-    console.log(this.$store.state.houses);
-  },
+
   //보안상 위험하다는 경고가 떴다 직접적으로 접근하지 말라는데 아무리 시도해도 state가 출력이 안된다... 하루를 다썼다..
   computed: {
     ...mapState(houseStore, ["houses"]),
     ...mapMutations(houseStore, [" SET_HOUSE_LIST"]),
     hous() {
-      console.log(this.houses);
       this.$store.state.houses = this.houses;
       return this.$store.state.houses;
     },

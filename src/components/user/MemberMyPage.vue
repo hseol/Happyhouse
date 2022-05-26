@@ -150,7 +150,6 @@ export default {
   },
   created() {
     this.user = this.userInfo;
-    console.log(this.user);
   },
   methods: {
     ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),

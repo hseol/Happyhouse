@@ -129,9 +129,6 @@ export default {
     },
 
     pwdConfirm() {
-      console.log(this.user.userpwd);
-      console.log(this.user.userpwdConfirm);
-
       return this.user.userpwd === this.user.userpwdConfirm;
     },
   },
@@ -150,12 +147,10 @@ export default {
           console.log(error);
         }
       );
-      console.log(this.user.userid);
     },
 
     onSubmit(event) {
       event.preventDefault();
-      console.log(this.user.userid);
       let err = true;
       let msg = "";
       !this.user.username &&
@@ -187,7 +182,6 @@ export default {
       else this.registerMember();
     },
     registerMember() {
-      console.log(this.user);
       insertMember(
         {
           userid: this.user.userid,

@@ -62,7 +62,6 @@ export default {
     },
     ...mapActions(houseStore, ["detailHouse"]),
     selectHouse() {
-      console.log(this.house);
       this.detailHouse(this.house);
     },
     colorChange(flag) {
@@ -100,7 +99,6 @@ async function eth_tx() {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
-      console.log("singer:", signer);
       const usdc = {
         address: "0x8e34e9906813A45327Bf017d8733F428DFEFa76F", //스마트 컨트랙트 주소:변경 요!!!
         abi: [

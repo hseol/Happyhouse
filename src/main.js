@@ -16,7 +16,7 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueCookies);
 Vue.config.productionTip = false;
-
+window.Kakao.init("929551aadfc7f7f042a99f58cbd97041");
 new Vue({
   router,
   store,

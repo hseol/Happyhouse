@@ -61,8 +61,6 @@ export default {
       });
 
       this.posi = posi;
-      console.log(this.posi);
-      //console.log(new kakao.maps.LatLng(126.640030500086, 37.4808144576815));
 
       var imageSrc =
         "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -87,68 +85,6 @@ export default {
       }
       this.map.setBounds(bounds);
     },
-    /////////////////////////지도 표시한다////////////////////////
-
-    // var iwContent = '<div style="padding:5px;">Hello World!</div>',
-    //   iwRemoveable = true;
-
-    // var infowindow = new kakao.maps.InfoWindow({
-    //   content: iwContent,
-    //   removable: iwRemoveable,
-    // });
-    //this.setOverlay();
-
-    // setOverlay() {
-    //   console.log("호출됨");
-    //   var bounds = this.map.getBounds();
-    //   console.log(bounds);
-    //   this.map.setBounds(bounds);
-
-    //   var content =
-    //     '<div class="overlaybox">' +
-    //     '    <div class="boxtitle">금주 영화순위</div>' +
-    //     '    <div class="first">' +
-    //     '        <div class="triangle text">1</div>' +
-    //     '        <div class="movietitle text">드래곤 길들이기2</div>' +
-    //     "    </div>" +
-    //     "    <ul>" +
-    //     '        <li class="up">' +
-    //     '            <span class="number">2</span>' +
-    //     '            <span class="title">명량</span>' +
-    //     '            <span class="arrow up"></span>' +
-    //     '            <span class="count">2</span>' +
-    //     "        </li>" +
-    //     "        <li>" +
-    //     '            <span class="number">3</span>' +
-    //     '            <span class="title">해적(바다로 간 산적)</span>' +
-    //     '            <span class="arrow up"></span>' +
-    //     '            <span class="count">6</span>' +
-    //     "        </li>" +
-    //     "        <li>" +
-    //     '            <span class="number">4</span>' +
-    //     '            <span class="title">해무</span>' +
-    //     '            <span class="arrow up"></span>' +
-    //     '            <span class="count">3</span>' +
-    //     "        </li>" +
-    //     "        <li>" +
-    //     '            <span class="number">5</span>' +
-    //     '            <span class="title">안녕, 헤이즐</span>' +
-    //     '            <span class="arrow down"></span>' +
-    //     '            <span class="count">1</span>' +
-    //     "        </li>" +
-    //     "    </ul>" +
-    //     "</div>";
-
-    //   var position = new kakao.maps.LatLng(this.house?.lat, this.house?.lng);
-    //   var customOverlay = new kakao.maps.CustomOverlay({
-    //     position: position,
-    //     content: content,
-    //     xAnchor: 0.3,
-    //     yAnchor: 0.91,
-    //   });
-
-    //   customOverlay.setMap(this.map);
-    // },
 
     //////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
@@ -165,7 +101,6 @@ export default {
   },
   watch: function (houses) {
     this.houses = houses;
-    console.log("호출");
     this.makeList();
   },
 };

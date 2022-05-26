@@ -68,15 +68,6 @@ export default {
   },
   computed: {
     ...mapState(houseStore, ["sidos", "guguns", "dongs", "houses"]),
-    // sidos() {
-    //   return this.$store.state.sidos;
-    // },
-    dongdong() {
-      console.log(this.gugunCode);
-      this.dongList();
-      console.log(this.dongs);
-      return 1;
-    },
   },
   created() {
     // this.$store.dispatch("getSido");
@@ -131,15 +122,11 @@ export default {
       this.recognition = new window.SpeechRecognition();
       this.recognition.interimResults = true;
 
-      //  console.log(this.recognition);
       this.recognition.addEventListener("result", (e) => {
-        //console.log(e.results[0][0].transcript);
         this.searchWords = e.results[0][0].transcript;
         const words = this.searchWords.split(" ");
         let sidoWord = words[0].trim();
-        console.log(this.$store.state.houseStore.sidos);
         let sido = this.$store.state.houseStore.sidos.find((item) => {
-          console.log("들어옴");
           return item.text == sidoWord;
         });
         this.sidoCode = sido.value;
@@ -147,33 +134,14 @@ export default {
         this.gugunList();
         setTimeout(() => {
           let gugunWord = words[1].trim();
-          console.log(gugunWord);
+
           let gugun = this.$store.state.houseStore.guguns.find((item) => {
             return item.text == gugunWord;
           });
           this.gugunCode = gugun.value;
-          console.log(this.gugunCode);
+
           this.dongList();
         }, 500);
-
-        //setTimeout(() => {}, 500);
-
-        // setTimeout(() => {
-        //   let dongWord = words[2].trim();
-        //   console.log(dongWord);
-        //   console.log(this.$store.state.houseStore);
-        //   let dong = this.$store.state.houseStore.dongs.find((item) => {
-        //   //  console.log("들어옴?");
-        //    // console.log(dongWord);
-        //     return item.text == dongWord;
-        //   });
-        //   // console.log(this.dong);
-        //   this.dongCode = dong.value;
-        //  // console.log(this.dongCode);
-        //   this.searchApt();
-        // }, 500);
-
-        //this.searchApt();
       });
     },
     voiceInput() {
