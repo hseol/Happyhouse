@@ -2,18 +2,20 @@
   <div>
     <div>
       <b-row class="mt-4 mb-4 text-center">
-        <b-col></b-col>
-        <b-col
+        
+        <!-- <b-col
           ><img :src="isOn ? on : off" width="50px" @click="voiceInput" /><input
             v-model="searchWords"
-        /></b-col>
+        /></b-col> -->
+        <b-col><b-icon-mic @click="voiceInput"></b-icon-mic><b-input
+            v-model="searchWords" placeholder="음성으로 검색하세요"/></b-col>
         <b-col></b-col>
       </b-row>
       <b-row class="">
-        <b-col
+        <!-- <b-col
           >(마이크를 누르고 5초안에 검색 지역을 말하세요. ex. "서울특별시
           종로구")</b-col
-        >
+        > -->
       </b-row>
     </div>
     <b-row class="mt-4 mb-4 text-center">
