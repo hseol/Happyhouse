@@ -9,6 +9,12 @@
 		from ssafy_member
 		where userid = #{userid} and userpwd = #{userpwd}
 	</select>
+	<!-- 유효성 검사 -->
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(userid)
+		from ssafy_member
+		where userid = #{userid}
+	</select>
 	
 	<!-- 회원가입 -->
 	<insert id="insertMember" parameterType="memberDto">
@@ -33,11 +39,36 @@
 		   	   aboutme=#{aboutme}
 		 where userid = #{userid}
 	</update>
+
+	
 	
 		<!-- 게시글 삭제 -->
 	<delete id="deleteMember" parameterType="String">
 		delete 
 		from ssafy_member 
+		where userid = #{userid}
+	</delete>
+	
+	
+	<!-- 파일저장 -->
+		<insert id="registerFile" parameterType="MemberDto">
+		insert into file_info (userid, savefolder, originfile, savefile)
+		values
+		<foreach collection="fileInfos" item="fileinfo" separator=" , ">
+			(#{userid}, #{fileinfo.saveFolder}, #{fileinfo.originFile}, #{fileinfo.saveFile})
+		</foreach>
+	</insert>
+	
+	<!-- 파일찾기 -->
+		<select id="fileInfoList" resultType="FileInfoDto">
+		select savefolder, originfile, savefile
+		from file_info
+		where userid = #{userid}
+	</select>
+	
+	<!-- 파일삭제 -->
+	<delete id="deleteFile" parameterType="String">
+		delete from file_info
 		where userid = #{userid}
 	</delete>
 	

@@ -1,7 +1,5 @@
 package com.ssafy.vue.service;
 
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +42,18 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 		
 	}
+
+	@Override
+	public boolean updatePic(MemberDto memberDto) {
+		return memberMapper.updatePic(memberDto);
+	}
+
+	@Override
+	public int checkId(String userid) {
+		System.out.println(memberMapper.checkId(userid));
+		return memberMapper.checkId(userid); 
+	}
+
+
 
 }
