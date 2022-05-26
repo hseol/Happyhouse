@@ -13,7 +13,7 @@
             <b-form-group label="이름 :" label-for="username">
               <b-form-input
                 id="username"
-                v-model="user.username"
+                v-model="username"
                 type="text"
                 required
                 placeholder="이름 입력해주세요."
@@ -21,54 +21,65 @@
             </b-form-group>
             <b-form-group label="ID :" label-for="userid">
               <b-form-input
+                @keyup="availableId"
                 id="userid"
                 v-model="user.userid"
                 type="text"
                 required
                 placeholder="아이디 입력해주세요."
               ></b-form-input>
-              <!--  <b-button
+              <span class="badge badge-danger mt-1" v-if="!availableId"
+                >아이디는 6자이상이여야 합니다.</span
+              >
+              <b-button
                 type="button"
                 variant="secondary"
                 class="m-1"
-                @click="checkid"
+                @click="checkId"
                 >ID 중복 검사</b-button
-              > -->
+              >
             </b-form-group>
-
-            <b-form-group label="비밀번호 :" label-for="userpwd">
-              <b-form-input
-                type="password"
-                id="userpwd"
-                required
-                v-model="user.userpwd"
-                placeholder="비밀번호 입력해주세요."
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group label="이메일 :" label-for="email">
-              <b-form-input
-                type="mail"
-                id="email"
-                required
-                v-model="user.email"
-                placeholder="이메일 입력해주세요."
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group label="핸드폰번호 :" label-for="phone">
-              <b-form-input
-                type="tel"
-                id="phone"
-                required
-                v-model="user.phone"
-                placeholder="핸드폰 번호 입력해주세요."
-              ></b-form-input>
-            </b-form-group>
-            <b-button type="submit" variant="primary" class="m-1"
-              >회원가입</b-button
-            >
-            <b-button @click="moveHome" variant="danger" class="m-1"
-              >가입 취소</b-button
-            >
+            <div>
+              <b-form-group label="비밀번호 :" label-for="userpwd">
+                <b-form-input
+                  @blur="checkDuplicate"
+                  type="password"
+                  id="userpwd"
+                  required
+                  v-model="userpwd"
+                  placeholder="비밀번호 입력해주세요."
+                ></b-form-input>
+                <span class="badge badge-danger mt-1" v-if="!availablePw"
+                  >비밀번호는 영문+숫자 8자 이상입니다.</span
+                >
+              </b-form-group>
+              <b-form-group label="이메일 :" label-for="email">
+                <b-form-input
+                  type="mail"
+                  id="email"
+                  required
+                  v-model="email"
+                  placeholder="이메일 입력해주세요."
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group label="핸드폰번호 :" label-for="phone">
+                <b-form-input
+                  type="tel"
+                  id="phone"
+                  required
+                  v-model="phone"
+                  placeholder="핸드폰 번호 입력해주세요."
+                ></b-form-input>
+              </b-form-group>
+              <div v-if="isId != null">
+                <b-button type="submit" variant="primary" class="m-1"
+                  >회원가입</b-button
+                >
+              </div>
+              <b-button @click="moveHome" variant="danger" class="m-1"
+                >가입 취소</b-button
+              >
+            </div>
           </b-form>
         </b-card>
         <br />
@@ -79,7 +90,7 @@
 </template>
 
 <script>
-import { insertMember } from "@/api/member";
+import { insertMember, checkId } from "@/api/member";
 //import { mapState } from "vuex";
 
 export default {
@@ -93,9 +104,36 @@ export default {
         email: "",
         phone: "",
       },
+      isId: null,
     };
   },
   methods: {
+    checkId() {
+      checkId(
+        this.user.userid,
+        ({ data }) => {
+          let msg = "이 아이디는 이미 사용중입니다.";
+          if (data === "success") {
+            msg = "이 아이디는 사용가능합니다.";
+            this.isId = 1;
+          }
+          alert(msg);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      console.log(this.user.userid);
+    },
+
+    async checkDuplicate() {
+      this.availableId = false;
+      //이메일 유효성을 검사한다.
+      if (this.user.userid.length >= 6) {
+        this.availableId = true;
+      }
+    },
+
     onSubmit(event) {
       event.preventDefault();
 
@@ -149,30 +187,12 @@ export default {
         },
         (error) => {
           console.log(error);
-        },
+        }
       );
     },
     moveHome() {
       this.$router.push({ name: "home" });
     },
-    // signup() {
-    //   http
-    //     .axios({
-    //       url: "/user",
-    //       method: "post",
-    //       data: this.user,
-    //     })
-    //     .then((res) => {
-    //       if (res.data === "success") {
-    //         alert("회원 가입 성공");
-    //         this.moveHome();
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       alert("회원 가입 실패");
-    //       console.log(err);
-    //     });
-    // },
   },
 };
 </script>

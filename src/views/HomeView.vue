@@ -1,40 +1,41 @@
 <template>
-  <b-container class="bv-example-row mt-3 text-center">
-    <h3 class="underline-steelblue">
-      <b-icon icon="house"></b-icon> HappyHouse
-    </h3>
-    <b-row>
-      <b-carousel
-        id="carousel-fade"
-        style="text-shadow: 0px 0px 2px #000"
-        fade
-        indicators
-        img-width="1140"
-        img-height="480"
-      >
-        <b-carousel-slide
-          caption="first Slide"
-          img-src="https://picsum.photos/1140/480/?image=10"
-        ></b-carousel-slide>
-        <b-carousel-slide
-          caption="Second Slide"
-          img-src="https://picsum.photos/1140/480/?image=12"
-        ></b-carousel-slide>
-        <b-carousel-slide
-          caption="Third Slide"
-          img-src="https://picsum.photos/1140/480/?image=22"
-        ></b-carousel-slide>
-      </b-carousel>
-    </b-row>
-    <b-row>
-      <b-col class="my-3"
-        ><b-alert show><h3>공지사항</h3></b-alert><board-home></board-home
-      ></b-col>
-      <b-col class="my-3"
-        ><b-alert show><h3>Q&amp;A</h3></b-alert><qna-list></qna-list
-      ></b-col>
-    </b-row>
-  </b-container>
+  <div>
+    <b-container class="bv-example-row mt-3 text-center">
+      <h3 class="underline-steelblue">
+        <b-icon icon="house"></b-icon> HappyHouse
+      </h3>
+      <b-row>
+        <b-carousel
+          id="carousel-fade"
+          style="text-shadow: 0px 0px 2px #000"
+          fade
+          indicators
+          img-width="100%"
+        >
+          <b-carousel-slide
+            caption="first Slide"
+            img-src="https://picsum.photos/1140/480/?image=10"
+          ></b-carousel-slide>
+          <b-carousel-slide
+            caption="Second Slide"
+            img-src="https://picsum.photos/1140/480/?image=12"
+          ></b-carousel-slide>
+          <b-carousel-slide
+            caption="Third Slide"
+            img-src="https://picsum.photos/1140/480/?image=22"
+          ></b-carousel-slide>
+        </b-carousel>
+      </b-row>
+      <b-row>
+        <b-col class="my-3"
+          ><b-alert show><h3>공지사항</h3></b-alert><board-home></board-home
+        ></b-col>
+        <b-col class="my-3"
+          ><b-alert show><h3>Q&amp;A</h3></b-alert><qna-list></qna-list
+        ></b-col>
+      </b-row>
+    </b-container>
+  </div>
 </template>
 
 <script>

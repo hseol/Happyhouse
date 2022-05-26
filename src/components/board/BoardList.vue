@@ -18,6 +18,8 @@
 <script>
 import { listArticle } from "@/api/board.js";
 import BoardPaginatedList from "./BoardPaginatedList";
+import { mapState } from "vuex";
+import memberStore from "@/store/modules/memberStore";
 //import BoardListItem from "@/components/board/item/BoardListItem";
 
 export default {
@@ -28,9 +30,12 @@ export default {
   data() {
     return {
       articles: [],
+      user: {},
     };
   },
   created() {
+    this.user = this.$store.state.memberStore.userInfo;
+    console.log(this.user);
     let param = {
       pg: 1,
       spp: 20,
@@ -44,7 +49,7 @@ export default {
       },
       (error) => {
         console.log(error);
-      },
+      }
     );
   },
   methods: {
@@ -52,7 +57,9 @@ export default {
       this.$router.push({ name: "boardRegister" });
     },
   },
-  computed: {},
+  computed: {
+    ...mapState(memberStore, ["userInfo"]),
+  },
 };
 </script>
 

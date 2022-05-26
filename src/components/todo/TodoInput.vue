@@ -2,7 +2,7 @@
   <b-container class="bv-example-row">
     <b-row class="text-center">
       <b-col>
-        <b-input-group prepend="할일" class="mt-3">
+        <b-input-group class="mt-3">
           <b-form-input
             v-model.trim="todoTitle"
             @keypress.enter="registerTodo"

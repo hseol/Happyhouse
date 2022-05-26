@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       isColor: false,
-      hou: {},
+      // hou: {},
     };
   },
   props: {
@@ -60,9 +60,9 @@ export default {
       this.isColor = flag;
     },
   },
-  created() {
-    this.hou = this.house;
-  },
+  // created() {
+  //   this.hou = this.house;
+  // },
 };
 </script>
 

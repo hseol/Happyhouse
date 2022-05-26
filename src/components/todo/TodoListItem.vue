@@ -1,16 +1,16 @@
 <template>
-  <b-container class="bv-example-row">
-    <b-row class="mt-3">
-      <b-col cols="9" class="bg-light p-2 pl-5 text-left">
-        <span :class="{ completed: todo.completed }" @click="statusChange">{{
-          todo.title
-        }}</span>
-      </b-col>
-      <b-col class="p-2" cols="1"
-        ><b-button variant="danger" @click="cancelTodo">X</b-button></b-col
-      >
-    </b-row>
-  </b-container>
+  <!-- <b-container class="bv-example-row"> -->
+  <b-row class="mt-3">
+    <b-col cols="9" class="bg-light p-2 pl-5 text-left">
+      <span :class="{ completed: todo.completed }" @click="statusChange">{{
+        todo.title
+      }}</span>
+    </b-col>
+    <b-col class="p-2" cols="1"
+      ><b-button variant="danger" @click="cancelTodo">X</b-button></b-col
+    >
+  </b-row>
+  <!-- </b-container> -->
 </template>
 
 <script>

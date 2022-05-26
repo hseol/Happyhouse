@@ -1,35 +1,7 @@
 <template>
   <div>
     <div>
-      <b-row class="mt-4 mb-4 text-center">
-        
-        <!-- <b-col
-          ><img :src="isOn ? on : off" width="50px" @click="voiceInput" /><input
-            v-model="searchWords"
-        /></b-col> -->
-        <b-col><b-icon-mic @click="voiceInput"></b-icon-mic><b-input
-            v-model="searchWords" placeholder="음성으로 검색하세요"/></b-col>
-        <b-col></b-col>
-      </b-row>
-      <b-row class="">
-        <!-- <b-col
-          >(마이크를 누르고 5초안에 검색 지역을 말하세요. ex. "서울특별시
-          종로구")</b-col
-        > -->
-      </b-row>
-    </div>
     <b-row class="mt-4 mb-4 text-center">
-      <!-- <b-col class="sm-3">
-      <b-form-input
-        v-model.trim="dongCode"
-        placeholder="동코드 입력...(예 : 11110)"
-        @keypress.enter="sendKeyword"
-      ></b-form-input>
-    </b-col>
-    <b-col class="sm-3" align="left">
-      <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
-    </b-col> -->
-
       <b-col class="sm-3">
         <b-form-select
           v-model="sidoCode"
@@ -45,12 +17,19 @@
         ></b-form-select>
       </b-col>
       <b-col class="sm-3">
-        <b-form-select
-          v-model="dongCode"
-          :options="dongs"
-          @change="searchApt"
-        ></b-form-select>
+        <b-form-select v-model="dongCode" :options="dongs"></b-form-select>
       </b-col>
+      <b-col md="2"
+        ><b-button variant="dark" @click="searchApt" id="btn"
+          >검색</b-button
+        ></b-col
+      >
+      <b-col md="1"
+        ><img :src="isOn ? on : off" width="50px" @click="voiceInput" /><input
+          type="hidden"
+          v-model="searchWords"
+          placeholder="음성으로 검색해봐요~"
+      /></b-col>
     </b-row>
   </div>
 </template>
@@ -89,6 +68,12 @@ export default {
     // sidos() {
     //   return this.$store.state.sidos;
     // },
+    dongdong() {
+      console.log(this.gugunCode);
+      this.dongList();
+      console.log(this.dongs);
+      return 1;
+    },
   },
   created() {
     // this.$store.dispatch("getSido");
@@ -110,6 +95,7 @@ export default {
       "CLEAR_GUGUN_LIST",
       "CLEAR_DONG_LIST",
       "SET_HOUSE_LIST",
+      "SET_DONG_LIST",
     ]),
 
     // sidoList() {
@@ -141,36 +127,50 @@ export default {
         window.SpeechRecognition || window.webkitSpeechRecognition;
       this.recognition = new window.SpeechRecognition();
       this.recognition.interimResults = true;
-      console.log(this.sidos);
+
       //  console.log(this.recognition);
       this.recognition.addEventListener("result", (e) => {
         //console.log(e.results[0][0].transcript);
         this.searchWords = e.results[0][0].transcript;
         const words = this.searchWords.split(" ");
         let sidoWord = words[0].trim();
-        let sido = this.$store.state.sidos.find((item) => {
+        console.log(this.$store.state.houseStore.sidos);
+        let sido = this.$store.state.houseStore.sidos.find((item) => {
+          console.log("들어옴");
           return item.text == sidoWord;
         });
         this.sidoCode = sido.value;
 
         this.gugunList();
-        let gugunWord = words[1].trim();
-        console.log(gugunWord);
-        let gugun = this.$store.state.guguns.find((item) => {
-          return item.text == gugunWord;
-        });
-        this.gugunCode = gugun.value;
-
-        this.dongList();
         setTimeout(() => {
-          let dongWord = words[2].trim();
-          console.log(dongWord);
-          let dong = this.$store.state.dongs.find((item) => {
-            return item.text == dongWord;
+          let gugunWord = words[1].trim();
+          console.log(gugunWord);
+          let gugun = this.$store.state.houseStore.guguns.find((item) => {
+            return item.text == gugunWord;
           });
-          this.dongCode = dong.value;
-          this.searchApt();
+          this.gugunCode = gugun.value;
+          console.log(this.gugunCode);
+          this.dongList();
         }, 500);
+
+        //setTimeout(() => {}, 500);
+
+        // setTimeout(() => {
+        //   let dongWord = words[2].trim();
+        //   console.log(dongWord);
+        //   console.log(this.$store.state.houseStore);
+        //   let dong = this.$store.state.houseStore.dongs.find((item) => {
+        //   //  console.log("들어옴?");
+        //    // console.log(dongWord);
+        //     return item.text == dongWord;
+        //   });
+        //   // console.log(this.dong);
+        //   this.dongCode = dong.value;
+        //  // console.log(this.dongCode);
+        //   this.searchApt();
+        // }, 500);
+
+        //this.searchApt();
       });
     },
     voiceInput() {
@@ -185,4 +185,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#btn {
+  width: 100px;
+}
+</style>

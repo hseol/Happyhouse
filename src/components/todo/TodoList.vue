@@ -1,15 +1,15 @@
 <template>
-  <b-container class="bv-example-row">
-    <b-row class="mt-4 mb-4 text-center">
-      <b-col>
-        <todo-list-item
-          v-for="(todo, index) in todos"
-          :key="index"
-          :todo="todo"
-        />
-      </b-col>
-    </b-row>
-  </b-container>
+  <!-- <b-container class="bv-example-row"> -->
+  <b-row class="mt-4 mb-4 text-center">
+    <b-col>
+      <todo-list-item
+        v-for="(todo, index) in todos"
+        :key="index"
+        :todo="todo"
+      />
+    </b-col>
+  </b-row>
+  <!-- </b-container> -->
 </template>
 
 <script>
