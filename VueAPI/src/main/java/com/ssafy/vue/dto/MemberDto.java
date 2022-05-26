@@ -1,5 +1,7 @@
 package com.ssafy.vue.dto;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -20,6 +22,15 @@ public class MemberDto {
 	private String aboutme;
 	@ApiModelProperty(value = "회원 가입일")
 	private String joindate;
+	//private List<FileInfoDto> fileInfos;
+
+//	public List<FileInfoDto> getFileInfos() {
+//		return fileInfos;
+//	}
+//
+//	public void setFileInfos(List<FileInfoDto> fileInfos) {
+//		this.fileInfos = fileInfos;
+//	}
 
 	public String getUserid() {
 		return userid;
@@ -81,8 +92,12 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [userid=" + userid + ", username=" + username + ", userpwd=" + userpwd + ", email=" + email
-				+ ", phone=" + phone + ", aboutme=" + aboutme + ", joindate=" + joindate + "]";
+				+ ", phone=" + phone + ", aboutme=" + aboutme + ", joindate=" + joindate 
+				+ "]";
 	}
+	
+
+
 
 
 

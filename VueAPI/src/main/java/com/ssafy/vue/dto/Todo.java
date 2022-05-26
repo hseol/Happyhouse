@@ -14,7 +14,10 @@ public class Todo {
 	@ApiModelProperty(value = "작성자아이디")
 	String userid;
 	@ApiModelProperty(value = "내용")
-	String todo;
+	String content;
 	@ApiModelProperty(value = "작성일")
 	String regtime;
+	@ApiModelProperty(value = "완료여부")
+	boolean iscompleted;
+	
 }

@@ -25,15 +25,20 @@
 	</select>
 	
 	<select id="getAptInDong" parameterType="string" resultType="houseInfoDto">
-	select h.aptCode, h.apartmentName, h.buildYear, h.dongCode, h.dong, h.jibun, h.lat, h.lng, si.sidoName, gu.gugunName,
-				(select dealAmount from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) recentPrice
-		from houseinfo h
-		left join sidocode si
-		on left(h.dongCode,2) = left(si.sidoCode,2)
-		left join guguncode gu
-		on left(h.dongCode,5) = left(gu.gugunCode,5)
-		where dongCode = #{dong}
-		order by apartmentName;
+select h.aptCode, h.apartmentName, h.buildYear, h.dongCode, h.dong, h.jibun, h.lat, h.lng, si.sidoName, gu.gugunName,
+(select dealAmount from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) recentPrice,
+(select area from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) area,
+(select dealYear from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) dealYear,
+(select dealMonth from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) dealMonth,
+(select dealDay from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) dealDay,
+(select floor from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) floor
+from houseinfo h
+left join sidocode si
+on left(h.dongCode,2) = left(si.sidoCode,2)
+left join guguncode gu
+on left(h.dongCode,5) = left(gu.gugunCode,5)
+where dongCode = #{dong}
+order by apartmentName
 	</select>
 	
 </mapper>
