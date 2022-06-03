@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ssafy.vue.dto.FileInfoDto;
 import com.ssafy.vue.dto.MemberDto;
 
 
@@ -19,8 +18,5 @@ public interface MemberMapper {
 	public boolean updateMember(MemberDto memberDto);
 	public boolean updatePic(MemberDto memberDto);
 	public boolean deleteMember(String userid);
-	List<FileInfoDto> fileInfoList(String userid) throws Exception;
-	void deleteFile(String userid) throws Exception;
-	void registerFile(MemberDto memberDto) throws Exception;
 	public int checkId(String userid);
 }
